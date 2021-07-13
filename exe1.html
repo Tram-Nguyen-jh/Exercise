@@ -56,9 +56,14 @@
                     <a href="#" onclick="toggleMenu()">Resources</a>
                     <a href="#" onclick="toggleMenu()">Utitlities</a> 
                 </div>
-                <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+                <!-- <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
                     <i class="fa fa-bars"></i>
-                </a>
+                </a> -->
+                <div class="icon" onclick="toggleMenu()" id="closed">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
             </div>
         </header>
         <img src="images/background-image.png" alt="background-image">
@@ -184,14 +189,27 @@
           if (x.style.display === "block") {
             if (screen.width < 1024){
                 x.style.display = "none";
+                menuBtn()
                 document.body.style.position = '';
                 document.body.style.top = '';
                 }
           } else {
             x.style.display = "block";
+            closeBtn()
             if (screen.width < 1024){
             document.body.style.position = 'fixed';}
           }
+        }
+
+        function closeBtn() {
+            var x = document.getElementById("closed");
+            x.classList.add("change");
+            // document.getElementById("links").style.height = "100%";
+        }
+        function menuBtn() {
+          var x = document.getElementById("closed");
+            x.classList.remove("change");
+          
         }
     </script>
 </body>
