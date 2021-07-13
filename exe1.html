@@ -5,29 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Website about Rice in Vietnam"> <!--Optimize SEO-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="path/to/reset-and-normalize.min.css"> -->
+    <link rel="stylesheet" href="path/to/reset-and-normalize.min.css">
     <title>Exercise 1 - Full responsive</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.typekit.net/zeu2skt.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,300;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
         </style>
 </head>
 <body>
      <div class="slide-content">
           <header>
             <div class="navbar">
-                <a class="navbar-brand" href="#"><img style="width: 50px; height: 50px;" src="images/logo-leave.png" alt="logo-company"></a>
+                <a class="navbar-brand" href="#">
+                    <img style="width: 50px; height: 50px;" src="images/logo-leave.png" alt="logo-company">
+                </a>
                 <div class="features" id="links">
                     <div class="dropdown">
                         <button class="dropbtn">Commercial
                           <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-content">
-                          <a href="#" onclick="toggleMenu()">Commercial 1 </a>
-                          <a href="#" onclick="toggleMenu()">Commercial 2 </a>
-                          <a href="#" onclick="toggleMenu()">Commercial 3</a>
+                          <a href="#" onclick="toggleMenu()">Commercial 10 </a>
+                          <a href="#" onclick="toggleMenu()">Commercial 20 </a>
+                          <a href="#" onclick="toggleMenu()">Commercial 30</a>
                         </div>
                     </div>
                       
@@ -36,9 +38,9 @@
                             <i class="fa fa-caret-down"></i>
                           </button>
                           <div class="dropdown-content">
-                            <a href="#" onclick="toogleMenu()">Industrial 1 </a>
-                            <a href="#" onclick="toggleMenu()">Industrial 2 </a>
-                            <a href="#" onclick="toggleMenu()">Industrial 3</a>
+                            <a href="#" onclick="toogleMenu()">Industrial 10 </a>
+                            <a href="#" onclick="toggleMenu()">Industrial 20 </a>
+                            <a href="#" onclick="toggleMenu()">Industrial 30</a>
                           </div>
                     </div> 
           
@@ -47,8 +49,8 @@
                             <i class="fa fa-caret-down"></i>
                           </button>
                           <div class="dropdown-content">
-                            <a href="#" onclick="toggleMenu()">Infrastructure 1 </a>
-                            <a href="#" onclick="toggleMenu()">Infrastructure 2 </a>
+                            <a href="#" onclick="toggleMenu()">Infrastructure 10 </a>
+                            <a href="#" onclick="toggleMenu()">Infrastructure 20 </a>
                           </div>
                     </div> 
                     <a href="#" onclick="toggleMenu()">Resources</a>
@@ -59,7 +61,7 @@
                 </a>
             </div>
         </header>
-        <img src="images/background-image.png" alt="background-image" style="height:100%">
+        <img src="images/background-image.png" alt="background-image">
         <div class="decor">
             <img src="images/decor.png" alt="decor">
         </div>
@@ -74,10 +76,11 @@
     <div class="home">
         <div class="home-content">
             <div class="l-home">
-                <q></q>
+                <!-- <q></q> -->
                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec leo nisi, feugiat vel placerat vitae, 
-                vulputate ac nibh. Ut scelerisque quis nulla sed tempor. <q></q></p>   
-                <br> <br> <br> <br>
+                vulputate ac nibh. Ut scelerisque quis nulla sed tempor. 
+                <!-- <q></q> -->
+                </p>   
                 <div class="btn">
                     <a href="#" class="previous">&#8249;</a>
                     <a href="#" class="next">&#8250;</a>
@@ -179,13 +182,17 @@
         function toggleMenu() {
           var x = document.getElementById("links");
           if (x.style.display === "block") {
-            if (screen.width < 600){x.style.display = "none";}
+            if (screen.width < 1024){
+                x.style.display = "none";
+                document.body.style.position = '';
+                document.body.style.top = '';
+                }
           } else {
             x.style.display = "block";
+            if (screen.width < 1024){
+            document.body.style.position = 'fixed';}
           }
         }
-
-        
     </script>
 </body>
 

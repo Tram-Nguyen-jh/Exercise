@@ -1,18 +1,15 @@
-@import "path/to/reset-and-normalize.min.css";
 :root {
     --radius: 6px;
     --baseBtn: #ffba6e;
     --white: #fff;
     --orangeText: #fe992a;
-    --accentBg: #FBFBFB;
-    --accentFg: #35BBCA;
-    --fontcolor: #828282;
+    --green: #376d8f;
   }
 /*Header*/
 .navbar {
     overflow: hidden;
     background-color: transparent;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     font-family: Lato;
   }
@@ -26,8 +23,9 @@
   }
   .features{
     max-width: 1024;
-    margin: auto;
-    
+    /*Khong tran vien*/
+    /* overflow: hidden; */
+    margin: auto; 
   }
   .dropdown {
     float: left;
@@ -76,8 +74,9 @@
   }
 
 /*Hamburger Menu*/
-  .navbar #myLinks {
+  .navbar #links {
     display: none;
+    /* overflow: hidden; */
   }
 
   .navbar a .icon {
@@ -87,13 +86,67 @@
     right: 0;
     top: 0;
   }
+.navbar .icon {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 16px;
+    top: 14px;
+}
+.navbar .features{
+    position: relative;
+    width: 100vw;
+    height: 100vh; 
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* transition: .5s;
+    transition-delay: .5s; */
+    backdrop-filter: blur(2px);
+    background-color: rgb(55,109,143, 0.6);
+}
+.navbar .feature a, .navbar .feature .dropdown {
+    color: white;
+    padding: 14px 0px !important;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+    flex: 1;
+}
+.features .dropdown{
+    width: 100%;
+    display: block;
+    font-weight: 700;
+}
+.features a{
+    width: 100%;
+    display: block;
+    font-weight: 400;
+}
+.navbar > a{
+    padding: 14px 16px;
+}
+
+.dropdown:hover .dropbtn,  .dropdown .dropbtn, .dropdown-content {
+    width: 100%;
+  }
+.dropdown .dropbtn i{
+    margin-left: 5px;
+}
   /*Body*/
   body{
       margin: 0;
   }
   hr{
-      color: #eaeaea;
+      border: 1px solid #eaeaea;
       margin: 20px;
+      margin-top: 60px;
   }
   /* Slideshow container */
   .slide-content {
@@ -102,8 +155,8 @@
   .slide-content .text{
       position: absolute;
       color: white;
-      font-family: Lato;
-      font-size: 24px;
+      font-family: 'Lato', sans-serif;
+      font-size: 32px;
   }
   .slide-content .text p{
       font-size: 16px;
@@ -119,8 +172,19 @@
   .slide-content .decor{
     position: absolute;
     bottom: 0px;
-    width: 100%;
+    object-fit: cover;
+    /* width: 100%; */
   }
+  .slide-content img{
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+  }
+.decor img{
+    object-fit: cover;
+    width: 100%;
+    height: 30vh;
+}
 /*Homepage*/
 .home{
     background-color: white;
@@ -128,8 +192,7 @@
 .home-content{
     max-width: 1024px;
     margin: auto;
-    /* padding-top: 5%; */
-    padding-bottom: 5%;
+    padding-bottom: 10%;
 }
 .l-home{
     position: relative;
@@ -141,36 +204,32 @@
     quotes: "" "”";
     font-size: 20px;
     line-height: 28px;
+    position: relative;
 }
-p q {
-    font-weight: 500;
+.l-home p::after{
+    content: "”";
+    font-size: 60px;
+    position: absolute;
+    bottom: -30px;
 }
-q{
-    color: #fe992a;
-    font-family: 'Lato', sans-serif;
-    font-style: italic;
-    font-size: 30px;
-    font-weight: 500;
-    /* font-weight: 300; */
+.l-home p::before{
+    content:  "“";
+    font-size: 60px;
 }
-
 .btn{
     position: absolute;
-    padding-top: 10%;
-    bottom: 0;
-    right: 10%;
-    /* width: 60px; */
+    bottom: -40px;
+    right: 24px;
     height: 30px;
     display: flex;
     align-items: center;
-    font-size: 20px;
-    
+    font-size: 20px; 
 }
 .l-home > p{
     color: var(--orangeText);
     font-family: 'Lato', sans-serif;
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
     line-height: 28px;
 }
@@ -185,6 +244,9 @@ q{
     color: #737c85;
     font-size: 14px;
     line-height: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: 400;
+    font-size: 14px;
 }
 .home a {
     text-decoration: none;
@@ -204,7 +266,6 @@ q{
     background-color: var(--baseBtn);
     color: var(--white);
   }
-
 /*Footer*/
 footer{
     background-color: #e87875;
@@ -247,24 +308,18 @@ footer{
     flex-wrap: wrap;
 }
 .r-footer > .section{
-    width: 90px;
-    margin: 10px;
+    width: 100px;
+    margin: 10px 5px 10px 0;
 }
-
-/*Phone View*/
-@media only screen and (max-width:600px){
-    .r-footer{
-        padding-left: 5%;
-        padding-right: 5%;
+/* Phone View */
+/* @media only screen and (max-width:600px){ */
+    .r-footer, .l-footer{
+        padding-left: 24px;
+        padding-right: 24px;
     }
-    .l-footer{
-        padding-left: 5%;
-    }
-    .l-home{
-        padding: 0 5%;
-    }
-    .r-home{
-        padding: 0 5%;
+    .l-home, .r-home{
+        padding-left: 24px;
+        padding-right: 24px;
     }
     .slide-content > .text{
         width: 90%;
@@ -274,157 +329,64 @@ footer{
         margin: auto;
     }
     .slide-content .text p{
-        font-size: 0.5em;
+        font-size: 16px;
     }
-    .navbar {
-        overflow: hidden;
-    }
-    .navbar .icon {
-        width: 25px;
-        height: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        right: 5%;
-        /* top: 15px; */
-    }
-    .navbar .features{
-        position: absolute;
-        bottom: -220px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        /* background-color: rgb(111,161,172, 0.1); */
-        background-color: rgb(55,109,143, 0.5);
-    }
-    .navbar .feature a, .navbar .feature .dropdown {
-        color: white;
-        padding: 14px 0px !important;
-        text-decoration: none;
-        font-size: 17px;
-        display: block;
-    }
-    .features .dropdown{
-        width: 100%;
-        display: block;
-    }
-    .features a{
-        width: 100%;
-        display: block;
-    }
-    .navbar > a{
-        padding: 14px 16px;
-    }
-
-    .dropdown:hover .dropbtn,  .dropdown .dropbtn, .dropdown-content {
-        width: 100%;
-      }
-}
 
 /* Show for: Tablet/Ipad View*/
-/* @media screen and (max-width:768px) {
-    img {
-        width: 100%;
-    }
-    .navbar #myLinks {
-        display: block;
-      }
-    .navbar a{
-        padding: 14px 16px;
-    }
-    .navbar .icon{
-        display: none;
-    }
-    .home-content{
-        display: flex;
-        padding: 0 15px;
-    }
-    .l-home{
-        flex: 1.25;
-    }
-    hr {
-        margin-left: 20px;
-    }
-    .r-home{
-        flex: 3;
-        margin-left: 2%;
-
-    }
-    .btn{
-        bottom: 10%;
-        right: 5%;
-    }
-    .home-content .r-home{
-        padding-right: 10px;
-    }
-    .footer-content{
-        display: flex;
-        justify-content: space-around;
-    }
+@media screen and (min-width:768px) {
     .r-footer{
-        margin-right: 5px;
-    }
-    .r-footer .section{
-        margin: 0;
-    }
-    .slide-content > .text{
-        position: absolute;
-        max-width: 768px;
-        margin: auto;
-        width: 50%;
-        left: 20%;
-        top: 22%;
-        color: var(--white);
-        font-family: 'Lato', sans-serif;
-  
+        justify-content: space-between;
+        /* padding-left: 50px; */
+    } 
+    .r-footer > .section{
+        width: 110px;
+        margin: 10px 0px;
+    } 
+    .slide-content .text p{
+        font-size: 20px;
     }
     .slide-content .text .title{
-        font-size: 100%;
-        font-family: 'Lato', sans-serif;
-        font-weight: 300;
+        font-size: 48px;
     }
-    .slide-content .text p{
-        font-size: 16px;
-        font-weight: 400;
-        font-family: 'Lato', sans-serif;
-        line-height: 25px;
-    }
-    .text{
-        width: 20%;
-    }
-} */
+} 
 
 /*Ipad Pro View*/
-/* @media screen and (max-width: 1024px) {
+@media screen and (min-width: 1024px) {
+    .r-footer, .l-footer{
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+    .l-home, .r-home{
+        padding-left: 32px;
+        padding-right: 32px;
+    }
     .home-content{
         display: flex;
-        padding: 0px 30px;
+        padding-bottom: 80px;
     }
     .l-home{
         flex: 1.25;
     }
     .r-home{
         flex: 3;
-        margin-left: 5%;
+        /* margin-left: 5%; */
     }
     .slide-content > .text{
         position: absolute;
         max-width: 1024px;
         margin: auto;
         width: 40%;
-        left: 15%;
-        top: 20%;
+        left: 16%;
+        top: 25%;
         color: var(--white);
+        text-align: left;
         font-family: 'Lato', sans-serif;
-  
     }
     .slide-content .text .title{
         font-size: 200%;
         font-family: 'Lato', sans-serif;
         font-weight: 300;
+        font-size: 52px;
     }
     .slide-content .text p{
         font-size: 16px;
@@ -432,12 +394,21 @@ footer{
         font-family: 'Lato', sans-serif;
         line-height: 25px;
     }
-    .features{
-        margin-left: 50px;
+    .slide-content .decor{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
     }
+    .slide-content > img{
+        height: 50vh;
+    }
+    .decor img{
+        width: 100%;
+        height: 50%;
+    }
+   
     .footer-content{
         display: flex;
-        padding: 20px 30px 100px;
         justify-content: space-between;
     }
     .r-footer{
@@ -449,7 +420,10 @@ footer{
     img{
         width: 100%;
     }
-    .navbar #myLinks {
+    .navbar{
+        align-items: flex-start;
+    }
+    .navbar #links {
         display: block;
       }
     .navbar a{
@@ -458,21 +432,58 @@ footer{
     .navbar .icon{
         display: none;
     }
-    .btn{
-        bottom: 20px;
+    .navbar #links {
+        display: block;
     }
-    hr{
-        margin-left: 30px;
+    .navbar .icon {
+        display: none;
     }
-}  */
+    .navbar .features{
+        width: max-content;
+        margin-left: 70px;
+        display: flex;
+        position: relative;
+        background-color: transparent;
+        backdrop-filter: blur(0px);
+        z-index: 0;
+    }
+    .navbar{
+        display: flex;
+        overflow: hidden;
+        align-items: flex-start;
+    }
+    .dropdown-content {
+        position: absolute;
+        z-index: 3;
+    }
+    .features .dropdown{
+        width: max-content;
+        margin-right: 20px;
+        margin-top: 10px;
+        /* display: inline; */
+    }
+    .features > a{
+        width: max-content;
+        margin-top: 10px;
+        margin-right: 20px;
+    }
+    .dropdown .dropbtn i{
+        margin-left: 10px;
+    } 
+    .dropdown-content a:hover {
+        background-color: #ddd;
+        width: max-content;
+      }
+    .dropdown:hover .dropbtn,  .dropdown .dropbtn, .dropdown-content {
+        width: max-content;
+      }
+}
 
 /*Desktop View*/
 @media screen and (min-width:1440px){
     .home-content{
         display: flex;
-    }
-    hr{
-        margin-left: 90px;
+        padding-bottom: 80px;
     }
     .l-home{
         flex: 1.25;
@@ -489,13 +500,14 @@ footer{
         left: 16%;
         top: 30%;
         color: var(--white);
+        text-align: left;
         font-family: 'Lato', sans-serif;
-  
     }
     .slide-content .text .title{
         font-size: 200%;
         font-family: 'Lato', sans-serif;
         font-weight: 300;
+        font-size: 52px;
     }
     .slide-content .text p{
         font-size: 16px;
@@ -503,9 +515,18 @@ footer{
         font-family: 'Lato', sans-serif;
         line-height: 25px;
     }
-    .features{
-        margin-left: 150px;
+    .slide-content .decor{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+    .slide-content > img{
+        height: 100vh;
     }
+    .decor img{
+        width: 100%;
+    }
+   
     .footer-content{
         display: flex;
         justify-content: space-between;
@@ -519,7 +540,10 @@ footer{
     img{
         width: 100%;
     }
-    .navbar #myLinks {
+    .navbar{
+        align-items: flex-start;
+    }
+    .navbar #links {
         display: block;
       }
     .navbar a{
@@ -527,5 +551,78 @@ footer{
     }
     .navbar .icon{
         display: none;
+    }
+    hr{
+        margin-left: 90px;
+        margin-top: 0px;
+    }
+    .navbar #links {
+        display: block;
+    }
+    .navbar .icon {
+        display: none;
+    }
+    .navbar .features{
+        width: max-content;
+        /* height: auto; */
+        margin-left: 145px;
+        display: flex;
+        position: relative;
+        background-color: transparent;
+        backdrop-filter: blur(0px);
+        z-index: 0;
+    }
+    .navbar{
+        display: flex;
+        overflow: hidden;
+        align-items: flex-start;
+    }
+    .dropdown-content {
+        position: absolute;
+        z-index: 3;
+    }
+    .features .dropdown{
+        width: max-content;
+        margin-right: 20px;
+        margin-top: 10px;
+        /* display: inline; */
+    }
+    .features > a{
+        width: max-content;
+        margin-top: 10px;
+        margin-right: 20px;
+    }
+    .dropdown .dropbtn i{
+        margin-left: 10px;
+    }
+    .dropdown-content {
+        width: inherit;
+    }
+    .dropdown-content a:hover {
+        background-color: #ddd;
+        width: max-content;
+      }
+    .dropdown:hover .dropbtn,  .dropdown .dropbtn, .dropdown-content {
+        width: max-content;
+      }
+    
+}
+
+@media screen and (min-width:1920px){
+    .slide-content > .text{
+        max-width: 1280px;
+        margin: auto;
+        width: 30%;
+        left: 18%;
+    }
+    .navbar .features{
+        max-width: 1280px;
+        margin: auto; 
+        width: max-content;
+        margin-left: 245px;
+    }
+    .home-content, .footer-content {
+        max-width: 1280px;
+        margin: auto; 
     }
 }
