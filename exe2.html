@@ -14,7 +14,37 @@
     
 </head>
 <body>
-    <div class="content-third">
+    <header>
+        <div class="header-content">
+           <div class="navbar">
+                    <div class="features" id="links">
+                        <a href="#" onclick="toggleMenu()">ABOUT</a>
+                        <a href="#" onclick="toggleMenu()">PRODUCTS</a>
+                        <a href="#" onclick="toggleMenu()">PROJECTS</a> 
+                        <a href="#" onclick="toggleMenu()">CONTACT</a> 
+                    </div>
+        
+                    <div class="icon" onclick="toggleMenu()" id="closed">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+            
+            </div>
+            <div class="decor">_</div>
+            <h3>SLEEK AS FKUC</h3> 
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna </p>
+            <div class="decor2">
+                <!-- <div>_</div> -->
+                <img class="decor2" src="images/right.svg" alt="arrow">
+            </div>
+            
+            <div class="decor">_</div>
+            <button> &#8595; </button>
+            <button class="circle-right">  &#8594;</button>
+        </div> 
+    </header>
+    <div class="content-first">
         <div class="intro-content">
             <h3> BRIGHT ASS ORANGE</h3>
             <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -23,11 +53,15 @@
                 </p>
          
         </div>
-        <div class="right-third-content">
-            <img src="images/mountain-bg.svg" alt="mountain-bg">
+        <div class="right-first-content">
+            <div  class="blend-mode">
+                <img src="images/mountain-bg.svg" alt="mountain-bg">
+            </div>
+           
             <div class="conclu-content">
                 <h3> FINALY A LAYOUT THAT BLOWS YOUR HEAD OFF </h3>
                 <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                <img src="images/bird.svg" alt="bird">
                 <a href="" style="color: #CFCFCF;">Tweet this shit</a>
             </div>
         </div>
@@ -125,7 +159,9 @@
                 </p>
         </div>
         <div class="right-third-content">
-            <img src="images/mountain-bg.svg" alt="mountain-bg">
+            <div class="blend-mode">
+                <img src="images/mountain-bg.svg" alt="mountain-bg">
+            </div>
             <div class="conclu-content">
                 <h3> THE END IS NIGH, WELL THE FOOTER ANYWAYS </h3>
                 <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
@@ -192,5 +228,34 @@
                             Ut enim ad minim veniam,</p>  
         </div> 
     </footer>
+    <script>
+        function toggleMenu() {
+          var x = document.getElementById("links");
+          if (x.style.display === "block") {
+            if (screen.width < 1024){
+                x.style.display = "none";
+                menuBtn()
+                document.body.style.position = '';
+                document.body.style.top = '';
+                }
+          } else {
+            x.style.display = "block";
+            closeBtn()
+            if (screen.width < 1024){
+            document.body.style.position = 'fixed';}
+          }
+        }
+
+        function closeBtn() {
+            var x = document.getElementById("closed");
+            x.classList.add("change");
+            // document.getElementById("links").style.height = "100%";
+        }
+        function menuBtn() {
+          var x = document.getElementById("closed");
+            x.classList.remove("change");
+          
+        }
+    </script>
 </body>
 </html>
