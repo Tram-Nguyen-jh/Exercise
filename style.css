@@ -4,23 +4,24 @@
     --white: #fff;
     --orangeText: #fe992a;
     --green: #376d8f;
+    --maxwidthcontent: 1024px;
   }
 /*Effect*/
 @-webkit-keyframes fadeIn{
     from {height: 0; opacity: 0;}
     to {height: 1; opacity: 1;}
 }
-/* @keyframes fadeIn{
+@keyframes fadeIn{
     from {opacity: 0;}
     to {opacity: 1;}
-} */
+}
 /*Header*/
 .navbar {
     overflow: hidden;
     background-color: transparent;
     /* display: flex; */
     align-items: center;
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;
   }
   .navbar a {
     float: left;
@@ -30,10 +31,13 @@
     padding: 14px 0px;
     text-decoration: none;
   }
+/*Header menu content*/
   .features{
-    max-width: 1024;
+    max-width: var(--maxwidthcontent);
     /*Khong tran vien*/
     /* overflow: hidden; */
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
     margin: auto; 
   }
   .dropdown {
@@ -88,21 +92,17 @@
     /* overflow-y: hidden; */
   }
 .navbar .icon {
-    /* width: 25px;
-    height: 25px; */
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     right: 16px;
     top: 14px;
-
-
     z-index: 5;
 
     /*Effect to become close button*/
-    width: 60px;
-    height: 45px;
+    width: 16px;
+    height: 12px;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
@@ -170,8 +170,7 @@
   }
   hr{
       border: 1px solid #eaeaea;
-      margin: 20px;
-      margin-top: 60px;
+      margin: 80px 20px 20px 20px;
   }
   /* Slideshow container */
   .slide-content {
@@ -215,7 +214,7 @@
     background-color: white;
 }
 .home-content{
-    max-width: 1024px;
+    max-width: var(--maxwidthcontent);
     margin: auto;
     padding-bottom: 10%;
 }
@@ -235,23 +234,25 @@
     content: "”";
     font-size: 60px;
     position: absolute;
-    bottom: -30px;
+    bottom: -40px;
 }
 .l-home p::before{
     content:  "“";
     font-size: 60px;
+    position: absolute;
+    top: -20px;
 }
 .btn{
     position: absolute;
-    bottom: -40px;
     right: 24px;
-    height: 30px;
+    bottom: -70px;
     display: flex;
     align-items: center;
     font-size: 20px; 
 }
 .l-home > p{
     color: var(--orangeText);
+
     font-family: 'Lato', sans-serif;
     font-size: 20px;
     font-weight: 400;
@@ -264,6 +265,11 @@
 }
 .r-home h3{
     color: #fe992a;
+    font-family: 'Lato', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
 }
 .r-home > p {
     color: #737c85;
@@ -319,7 +325,7 @@
     display: block;
     position: absolute;
     left: 0;
-    height: 9px;
+    height: 3px;
     width: 100%;
     background: var(--white);
     border-radius: 9px;
@@ -341,14 +347,14 @@
     transform-origin: left center;
 }
 .bar2{
-    top: 15px;
+    top: 4px;
     -webkit-transform-origin: left center;
     -moz-transform-origin: left center;
     -o-transform-origin: left center;
     transform-origin: left center;
 }
 .bar3{
-    top: 30px;
+    top: 8px;
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
   -o-transform-origin: left center;
@@ -363,7 +369,7 @@
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
     top: -3px;
-    left: 8px;
+    /* left: 8px; */
   }
   
 .change .bar2 {
@@ -377,8 +383,8 @@
     -moz-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    top: 39px;
-    left: 8px;
+    top: 8px;
+    /* left: 8px; */
   }
 
 /*Footer*/
@@ -388,10 +394,10 @@ footer{
     font-family: droid-sans, sans-serif;
 }
 .footer-content{
-    max-width: 1024px;
+    max-width: var(--maxwidthcontent);
     margin: auto;
-    padding-top: 2%; 
-    padding-bottom: 10%;
+    padding-top: 45px;
+    padding-bottom: 200px;
     font-weight: 400;
     font-size: 12px;
 }
@@ -399,6 +405,7 @@ footer{
     list-style: none;
     padding-left: 0;
     font-weight: 700;
+    margin-block-start: 0.5em;
 }
 .footer-content li{
     line-height: 2em;
@@ -412,9 +419,8 @@ footer{
     font-size: 12px;
 }
 .header{
-    font-weight: 700;
+    font-weight: 400;
     font-size: 12px;
-    font-style: bold;
     width: max-content;
     margin: 0;
 }
@@ -438,7 +444,7 @@ footer{
     }
     .slide-content > .text{
         width: 90%;
-        top: 35%;
+        top: 25%;
         left: 5%;
         text-align: center;
         margin: auto;
@@ -467,6 +473,9 @@ footer{
 
 /*Ipad Pro View*/
 @media screen and (min-width: 1024px) {
+    :root{
+        --maxwidthcontent: 900px;
+     }
     .r-footer, .l-footer{
         padding-left: 32px;
         padding-right: 32px;
@@ -478,9 +487,11 @@ footer{
     .home-content{
         display: flex;
         padding-bottom: 80px;
+        height: 327px;
     }
     .l-home{
         flex: 1.25;
+        width: 270px;
     }
     .r-home{
         flex: 3;
@@ -488,23 +499,22 @@ footer{
     }
     .slide-content > .text{
         position: absolute;
-        max-width: 1024px;
+        max-width: var(--maxwidthcontent);
         margin: auto;
         width: 40%;
-        left: 16%;
-        top: 25%;
+        left: 10%;
+        top: 20%;
         color: var(--white);
         text-align: left;
         font-family: 'Lato', sans-serif;
     }
     .slide-content .text .title{
-        font-size: 200%;
         font-family: 'Lato', sans-serif;
         font-weight: 300;
         font-size: 52px;
     }
     .slide-content .text p{
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 400;
         font-family: 'Lato', sans-serif;
         line-height: 25px;
@@ -552,7 +562,7 @@ footer{
     }
     .navbar .features{
         width: max-content;
-        margin-left: 70px;
+        margin-left: 0px;
         display: flex;
         position: relative;
         background-color: transparent;
@@ -589,6 +599,18 @@ footer{
     .dropdown:hover .dropbtn,  .dropdown .dropbtn, .dropdown-content {
         width: max-content;
       }
+    
+    .btn{
+    position: absolute;
+    right: 24px;
+    bottom: 42px;
+    display: flex;
+    align-items: center;
+    font-size: 20px; 
+    }
+    hr{
+        margin: 0px 20px 20px 20px;
+    }
 }
 
 /*Desktop View*/
@@ -602,15 +624,14 @@ footer{
     }
     .r-home{
         flex: 3;
-        margin-left: 10%;
     }
     .slide-content > .text{
         position: absolute;
-        max-width: 1024px;
+        max-width: var(--maxwidthcontent);
         margin: auto;
         width: 30%;
-        left: 16%;
-        top: 30%;
+        left: 20%;
+        /* top: 30%; */
         color: var(--white);
         text-align: left;
         font-family: 'Lato', sans-serif;
@@ -665,8 +686,8 @@ footer{
         display: none;
     }
     hr{
-        margin-left: 90px;
-        margin-top: 0px;
+        /* margin-left: 90px; */
+        margin: 0px 20px 20px 20px;
     }
     .navbar #links {
         display: block;
@@ -674,7 +695,7 @@ footer{
     .navbar .features{
         width: max-content;
         /* height: auto; */
-        margin-left: 145px;
+        margin-left: 185px;
         display: flex;
         position: relative;
         background-color: transparent;
@@ -699,7 +720,7 @@ footer{
     .features > a{
         width: max-content;
         margin-top: 10px;
-        margin-right: 20px;
+        margin-right: 30px;
     }
     .dropdown .dropbtn i{
         margin-left: 10px;
@@ -714,10 +735,23 @@ footer{
     .dropdown:hover .dropbtn,  .dropdown .dropbtn, .dropdown-content {
         width: max-content;
       }
+    .l-home p::after{
+        left: 50px;
+    }
+    .l-home, .r-home, .r-footer, .l-footer{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .r-home{
+        padding-left: 40px;
+    }
     
 }
 
 @media screen and (min-width:1920px){
+    :root{
+        --maxwidthcontent: 1280px;
+    }
     .slide-content > .text{
         max-width: 1280px;
         margin: auto;
@@ -733,5 +767,8 @@ footer{
     .home-content, .footer-content {
         max-width: 1280px;
         margin: auto; 
+    }
+    .l-home p::after{
+        left: auto;
     }
 }
