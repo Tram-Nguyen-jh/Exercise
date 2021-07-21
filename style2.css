@@ -83,7 +83,7 @@ body{
 /*Navbar*/
 .navbar{
     /* align-items: flex-start; */
-    padding: 20px 0px;
+    /* padding: 20px 0px; */
 }
 .navbar #links {
     display: block;
@@ -132,24 +132,35 @@ body{
 .navbar #links {
     display: none;
 }
+
 .navbar .features{
     display: flex; 
     position: relative;
-    background-color: #000;
-    backdrop-filter: blur(0px);
-    margin-top: 40px;
-    z-index: 0;
     width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    /* margin-top: 40px; */
+    z-index: 4;
+    padding-top: 10vh;
+
 }
 .navbar{
     display: flex;
     overflow: hidden;
     align-items: flex-start;
+    margin: -10px -24px;
+}
+.component-header{
+    padding-top: 100px;
 }
 /*Content inside header*/
-.header-content{
-    padding-top: 48px;
+header{
+    position: relative; /*DCM*/
 }
+/* .header-content{
+    padding-top: 48px;
+} */
 
 .logo{
     position: absolute;
@@ -305,13 +316,15 @@ header p{
     flex: 1;
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
-    font-size: 60px;
+    font-size: 45px;
     color: var(--white);
+    margin-bottom: 15px;
 }
 
 /*Form content*/
 .form-content{
     background-color: var(--bgblack);
+    padding-bottom: 50px;
 }
 .form-content h3{
     font-family: 'Raleway', sans-serif;
@@ -330,12 +343,19 @@ header p{
     margin-bottom: 10px;
     border: 0px solid;
     border-radius: 2px;
+    padding-left: 5px;
 }
 .form-content input[type=submit]{
     background-color: transparent;
     border: 2px solid var(--white);
     color: var(--white);
+    width: 102%;
 }
+form{
+    margin-left: -5px;
+}
+
+
 .outline-bg-form > img{
     width: 100%;
     height: 50vh;
@@ -352,6 +372,7 @@ header p{
     color: var(--white);
     font-weight: 400;
     font-size: 14px;
+    padding-bottom: 20px;
 }
 .content-third h3, .content-first h3{
     font-family: 'Raleway', sans-serif;
@@ -422,17 +443,70 @@ footer{
      margin-top: -220px;
      z-index: 3;
  }
+.content-second{
+    padding-bottom: 50px;
+}
+.content-main .outline-bg .second-content {
+    padding-bottom: 50px;
+}
+@media screen and (min-width: 768px) {
+    :root{
+        --maxwidthver1: 800px;
+     }
+     .footer-content, .content-second, .title-block, 
+    .content-block, .content-third, .form-content, .content-first, .header-content{
+    padding: 10px 12.5vw;
+    }
+    header{
+        width: 100%;
+        height: 76vh;
+    }
+    .navbar {
+        margin: -10px -12.5vw;
+    }
+    .form-content input[type=submit] {
+        width: 101%;
+    }
+    .blend-mode{
+        background-color: var(--orangePrimary);
+        margin-right: -12.5vw;
+        margin-left: -12.5vw;
+   }
+   .form-content{
+       padding-bottom: 50px;
+   }
+   .right-content > p{
+    padding-bottom: 50px;
+    }
+
+    .title-block img{
+        width: 100%;
+        object-fit: cover;
+    }
+}
 /*Desktop size*/
 @media screen and (min-width:1024px){
     :root{
         --maxwidthver1: 900px;
      }
+     header{
+        width: 100%;
+        height: 100vh;
+    }
+     .header-content{
+        padding-top: 48px;
+    }
      .navbar{
          padding: 30px 0;
+         margin: 0px 0px;
      }
+     
      .navbar .features{
          background-color: transparent;
          margin-top: 0;
+         width: 100%;
+        height: 0vh;
+        padding-top: 0vh;
      }
      .navbar a{
          display: inline;
@@ -471,17 +545,15 @@ footer{
         top: 58px;
     }
     /*Header component*/
-    .component-header{
+    /* .component-header{
         position: absolute;
         bottom: calc(var(--bottombasedonimg) + 200px);
-    }
+    } */
     /*Content first*/
     .content-first{
         position: absolute;
         right: 0;
-        /* bottom: -306px; */
-        bottom:  calc(-1 * var( --bottombasedonimg));
-        /* bottom:  calc(-1 * 306px); */
+        bottom: 0;
     }
     /*Content second: background white*/
     .content-col{
@@ -497,6 +569,9 @@ footer{
         padding-bottom: 5%;
         line-height: 22px;
     }
+    /* .right-content > p{
+        padding-bottom: 50px;
+    } */
     /*Content main: background orange*/
     .bg-content-main{
         position: relative;
@@ -525,6 +600,7 @@ footer{
     }
     .title-block h3{
         padding: 5px 15px;
+        font-size: 60px;
         /* padding-left: 20px; */
         padding-left: 10%;
     }
@@ -555,10 +631,13 @@ footer{
         flex: 2;
     }
 
-    .content-second{
+    /* .content-second{
         padding-top: var(--bottombasedonimg);
-    }
+    } */
     /*Form content*/
+    form{
+        margin-left: 0px;
+    }
     .outline-bg-form{
         position: relative;
     }
@@ -581,7 +660,7 @@ footer{
 
     } 
     .form-content{
-        padding-left: 10%;
+        /* padding-left: 10%; */
         background-color: transparent;
         padding-bottom: 50px;
     }
@@ -609,13 +688,17 @@ footer{
     .blend-mode{
         margin-right: 0;
         margin-left: 0;
+        width: 100%;
+        height: 100%;
    }
     /*Content-third*/
     .content-third, .content-first {
         padding: 0px;
         display: flex;
     }
-    
+    .content-third p, .content-first p{
+        padding-bottom: 0px;
+    }
     .content-third .intro-content, .content-third .conclu-content, 
     .content-first .intro-content, .content-first .conclu-content {
         padding: 0 5%;
@@ -639,7 +722,7 @@ footer{
     }
     .right-third-content img, .right-first-content img{
         width: 100%;
-        
+        height: 100%;
         object-fit: cover;
     }
     .right-third-content .conclu-content, .right-first-content .conclu-content{
@@ -664,7 +747,6 @@ footer{
         margin-bottom: 150px;
     }
     .footer-feature{
-        width: 980px;
         padding-top: 60px;
     }
     .menu-section{
@@ -690,6 +772,20 @@ footer{
         position: absolute;
         bottom: calc(var(--bottombasedonimg) - 50px);
     }
+    /*Content first*/
+    .content-first{
+        position: absolute;
+        right: 0;
+        /* bottom: -306px; */
+        bottom:  calc(-1 * var( --bottombasedonimg));
+        /* bottom:  calc(-1 * 306px); */
+    }
+    .content-second{
+        padding-top: var(--bottombasedonimg);
+    }
+    .form-content{
+        margin-left: 5%;
+    }
 }
 @media screen and (min-width:1920px) {
  :root{
@@ -704,4 +800,7 @@ footer{
  .navbar{
     padding-bottom: 250px;
  }
+ .form-content{
+    margin-left: 7%;
+}
 }
