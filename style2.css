@@ -757,6 +757,17 @@ footer{
     }
 
 }
+@media screen and (min-width: 1128px) {
+    .content-first{
+        position: absolute;
+        right: 0;
+        /* bottom:  calc(-1 * var( --bottombasedonimg)); */
+        bottom:  calc(-1 * 350px);
+    }
+    .content-second{
+        padding-top: 350px;
+    }
+}
 @media screen and (min-width:1440px) {
     :root{
        --maxwidthver1: 1024px;
