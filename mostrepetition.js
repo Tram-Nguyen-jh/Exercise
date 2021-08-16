@@ -46,5 +46,34 @@ function mostRepetition(arr){
   getAllIndexes(repition_rate, most).forEach(displayResuit);
 }
 
+function shorterUsingReduce(arr){
+  function getKeyByValue(object, value) {
+    return Object.keys(object).filter(key => object[key] === value); 
+    //use filter to find all element with same Max Rate instead of find: only first element
+  }
+  let rate = [], maxRate;
+  let countedRepetition = arr.reduce(function (allNumber, item) {
+    if (item in allNumber) {
+      allNumber[item]++; 
+      rate.push(allNumber[item]);
+    }
+    else {allNumber[item] = 1;}
+    maxRate = Math.max(...rate);
+
+    return allNumber;
+  }, {});
+
+  console.log(countedRepetition);
+  console.log("The most repetion is number:",getKeyByValue(countedRepetition,maxRate), 'with the repetition rate is: ', maxRate);
+  
+  // const key = Object.keys(countedRepetition).filter(key => countedRepetition[key] === maxRate);
+  // console.log(key);
+}
+
+
 var arr = [1,2,2,3,4,4,4,5,6];
+console.log("First way: ");
 mostRepetition(arr);
+
+console.log("\nSecond way: ");
+shorterUsingReduce(arr);

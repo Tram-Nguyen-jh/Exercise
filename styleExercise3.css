@@ -1,0 +1,44 @@
+body{
+  background-image: url(imagePixture/sakura.jpg);
+}
+.form, #displayQuestionList{
+width: 100%;
+position: relative;
+max-width: 500px;
+height: 200px;
+margin: 20px auto;
+background-color: #ffffff;
+padding: 30px;
+border-radius: 10px;
+margin: 0px auto;
+/* margin-top: 150px; */
+}
+#displayQuestionList{
+  margin-top: 20px;
+  height: 300px;
+}
+.btn-submit{
+  position:absolute;
+  bottom: 30px;
+  right: 30px;
+}
+.btn{
+  text-align: center;
+  margin-top: 50px;
+}
+h1{
+  margin-top: 100px;
+}
+
+table{
+  margin-bottom: 20px;
+}
+#table-question{
+  width: 100%;
+  border: 1px solid #000;
+}
+caption{
+  font-size: 20px; 
+  font-weight: 700;
+  margin-bottom: 10px;
+}

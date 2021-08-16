@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="styleExercise3.css"/>
+</head>
+<body>
+  
+<!--Display Question and Button-->
+<h1 style="text-align: center;">Decision Question Tree</h1>
+<div class="form">
+  <p style="font-size: 24px; font-weight: 700;" id="question"></p>
+  <p id="ans"></p>
+  <button class="btn-submit" id="btn"> Submit </button>
+</div>
+
+<!--Button Functionality-->
+<div class="btn">
+  <button class="btn-add" onclick="addQuestion()" id="btn-add"> Add </button>
+  <button class="btn-delete" onclick="deleteQuestion()" id="btn-delete"> Delete </button>
+  <button class="btn-edit" onclick="editQuestion()"id="btn-edit"> Edit </button>
+</div> 
+
+<!--Display Add/Remove/Edit Section-->
+<div id="displayQuestionList" style="overflow-x:auto; display: none;">
+  <table id="table-question">
+    <caption> Question List </caption>
+    <tr style="font-weight: 700;">
+      <td> Predicate</td>
+      <td> Action </td> 
+    </tr>
+  </table>
+  <!--Edit Section-->
+  <div id="edit" style="display: none;">
+    <table>
+      <tr>
+        <td> Question Number </td>
+        <td> <input type='text'id="question-edit" size=50 onchange="checkType()"> </td>
+      </tr>
+      <tr>
+        <td> New Predicate </td>
+        <td> <input type='text'id="predicate-edit" size=50> </td>
+      </tr>
+      <tr>
+        <td> New Action </td>
+        <td> <input type='text'id="action-edit" size=50> </td>
+      </tr>
+    </table>
+    <button id = "btn-submit-change"> Change </button>
+    <button id = "btn-close" onclick="closeTab()"> Close </button>
+  </div>
+
+  <!--Add Section-->
+  <div id="add" style="display: none;">
+    <table>
+      <tr>
+        <td> Add option for question </td>
+        <td> <input type='text'id="question-add" size=50 onchange="checkAdd()"> </td>
+      </tr>
+      <tr>
+        <td> New Predicate </td>
+        <td> <input type='text'id="predicate-add" size=50> </td>
+      </tr>
+      <tr>
+        <td> New Action </td>
+        <td> <input type='text'id="action-add" size=50> </td>
+      </tr>
+    </table>
+    <button id = "btn-submit-add"> Add Question </button>
+    <button id = "btn-close" onclick="closeTab()"> Close </button>
+  </div>
+
+  <!--Delete Section-->
+  <div id="delete" style="display: none;">
+    <table>
+      <tr>
+        <td> Choose question root </td>
+        <td> <input type='text'id="question-root-delete" size=50 onchange="checkDelete(id)"> </td>
+      </tr>
+      <tr>
+        <td> Choose question option to delete </td>
+        <td> <input type='text'id="question-option-delete" onchange="checkDelete(id)" size=50> </td>
+      </tr>
+    </table>
+    <button id = "btn-submit-delete"> Delete Question </button>
+    <button id = "btn-close" onclick="closeTab()"> Close </button>
+  </div>
+</div>
+
+
+<!--Handle Question tree-->
+<script>
+  function optionQuestion (predicate, action) {
+    this.predicate = predicate;
+    this.action = action;
+    this.optAns = [];
+    this.showOptions = showOptions;
+    this.addOptionAns = (newoption) => {
+      return this.optAns.push(newoption);
+    };
+    this.removeOptionsAns = (removeoption) => {
+      var index = this.optAns.indexOf(removeoption);
+      if (index > -1) {
+        this.optAns.splice(index, 1);
+      }
+      return this.optAns;
+    };
+};
+
+  function showOptions(callback){
+  let nextQuestion;
+  let optAns = this.optAns; 
+  document.getElementById('question').innerHTML = this.action;
+
+  if(optAns.length!=0){
+    optAns.forEach(function(opt, index){
+    document.getElementById("ans").innerHTML += + index+1 +"." +
+    "<input type='radio' name='answeropt' id='answeropt' value='"+ opt.predicate +"'>"+ opt.predicate + "<br>";
+    });
+  }
+  else {
+  document.getElementById("ans").innerHTML += "<input type='text' size=50 value='Type your answer here' onclick='this.value=\"\"' onblur=\"if(this.value=='') this.value='Type your answer here'\">" 
+  }
+
+
+  document.getElementById("btn").onclick = () => {
+  
+    const radioButtons = document.getElementsByName("answeropt");
+    let selectedRadioButton;
+
+    radioButtons.forEach(function(button){
+      if(button.checked) {
+        selectedRadioButton = button.value;
+        // alert(selectedRadioButton);
+      }
+    });
+    nextQuestion = optAns.find(choice => choice.predicate === selectedRadioButton);
+    document.getElementById("ans").innerHTML = "";
+    callback(nextQuestion);
+    return selectedRadioButton;
+  }
+
+
+  }
+
+  function addRowQuestion(arr){
+      let tableRef = document.getElementById("table-question");
+      arr.forEach(ele => {
+        let newRow  = tableRef.insertRow(-1);
+
+        let predicateCell = newRow.insertCell(0);
+        let newPredicate = document.createTextNode(ele.predicate);
+        predicateCell.appendChild(newPredicate);
+
+        let actionCell = newRow.insertCell(1);
+        let newAction = document.createTextNode(ele.action);
+        actionCell.appendChild(newAction);
+      });
+    }
+
+  class questionTree{
+  constructor(startQuestion){
+    this.startQuestion = startQuestion;
+    this.questionList = [];
+    this.addSingleNode(startQuestion);
+  }
+
+
+  run(){
+    this.startQuestion.showOptions(display);
+  }
+  addSingleNode(node){
+    this.questionList.push(node);
+  }
+  addNode(questionRoot, optionAns){
+    questionRoot.addOptionAns(optionAns);
+    this.addSingleNode(optionAns);
+    //Re-initialize 
+    addRowQuestion(this.questionList);
+    document.getElementById("question-add").value = ""; 
+    document.getElementById("predicate-add").value = "";
+    document.getElementById("action-add").value = "";
+  }
+
+  removeNode(questionRoot, optionAns){
+    questionRoot.removeOptionsAns(optionAns);
+    //Re-initialize 
+    addRowQuestion(this.questionList);
+    document.getElementById("question-root-delete").value = ""; 
+    document.getElementById("question-option-delete").value = ""; 
+  }
+
+
+  editNode(optionQuestion, newPredicate, newAction){
+    optionQuestion.predicate = newPredicate;
+    optionQuestion.action = newAction;
+    //Re-initialize 
+    addRowQuestion(this.questionList);
+    document.getElementById("question-edit").value = ""; 
+    document.getElementById("predicate-edit").value = "";
+    document.getElementById("action-edit").value = "";
+  }
+  }
+
+  function display(nextQuestion){
+if(typeof(nextQuestion) != "undefined"){
+  nextQuestion.showOptions(display);
+}
+else document.getElementById('question').innerHTML = "Thank you. This is the last question, Goodbye !";
+}
+</script>
+
+<!--Initial Question-->
+  <script>
+let question1 = new optionQuestion("start", "How old are you ?");
+let question2 = new optionQuestion("Under 18", "Are you graduated from High School ?");
+let question3 = new optionQuestion("Above 18", "Are you graduated from University ?");
+let question4 = new optionQuestion("Yes, I graduated from High School", "You are preparing for Nation Examination, right?");
+let question5 = new optionQuestion("No, I have not graduated yet", "Which grade are you in ?");
+let question6 = new optionQuestion("Grade 11", "Have you found any center to prepare for Nation Exam ?");
+let question7 = new optionQuestion("Grade 12", "Are you satisfied with your Tutoring center ?");
+let question8 = new optionQuestion("Grade 10", "Are you happy with the High School Enviroment ?");
+
+question1.addOptionAns(question2);
+question1.addOptionAns(question3);
+question2.addOptionAns(question4);
+question2.addOptionAns(question5);
+question5.addOptionAns(question8);
+question5.addOptionAns(question6);
+question5.addOptionAns(question7);
+
+
+let tree = new questionTree(question1);
+tree.addSingleNode(question2);
+tree.addSingleNode(question3);
+tree.addSingleNode(question4);
+tree.addSingleNode(question5);
+tree.addSingleNode(question6);
+tree.addSingleNode(question7);
+tree.addSingleNode(question8);
+
+tree.run();
+</script>
+
+<!--Handle Button Add/Delete/Edit-->
+<script>
+  function closeTab(){
+    document.getElementById("displayQuestionList").style.display = "none";
+    document.getElementById("edit").style.display = "none";
+    document.getElementById("add").style.display = "none";
+    document.getElementById("delete").style.display = "none";
+  };
+
+  function addQuestion(){
+    document.getElementById("displayQuestionList").style.display = "block";
+    addRowQuestion(tree.questionList);
+    document.getElementById("add").style.display = "block";
+
+    document.getElementById("btn-submit-add").onclick = () => {
+    document.getElementById("table-question").innerHTML="<caption> Question List </caption><tr style=\"font-weight: 700;\"><td> Predicate</td><td> Action </td> </tr>";
+      
+      let index = document.getElementById("question-add").value;
+      let newPredicate = document.getElementById("predicate-add").value;
+      let newAction = document.getElementById("action-add").value;
+
+      let questionAdd = new optionQuestion(newPredicate, newAction);
+      tree.addNode(tree.questionList[index-1], questionAdd);
+      alert("Added Successfully");
+    }
+  };
+
+  function deleteQuestion(){
+    document.getElementById("displayQuestionList").style.display = "block";
+    document.getElementById("delete").style.display = "block";
+    addRowQuestion(tree.questionList);
+
+    document.getElementById("btn-submit-delete").onclick = () => {
+    document.getElementById("table-question").innerHTML="<caption> Question List </caption><tr style=\"font-weight: 700;\"><td> Predicate</td><td> Action </td> </tr>";
+      
+    let indexRoot = document.getElementById("question-root-delete").value;
+    let indexRemove = document.getElementById("question-option-delete").value;
+    tree.removeNode(tree.questionList[indexRoot-1], tree.questionList[indexRemove-1]);
+    alert("Removed Successfully");}
+
+  };
+
+  function editQuestion(){
+    document.getElementById("displayQuestionList").style.display = "block";
+    document.getElementById("edit").style.display = "block";
+    addRowQuestion(tree.questionList);
+
+    document.getElementById("btn-submit-change").onclick = () => {
+    document.getElementById("table-question").innerHTML="<caption> Question List </caption><tr style=\"font-weight: 700;\"><td> Predicate</td><td> Action </td> </tr>";
+      
+      let index = document.getElementById("question-edit").value;
+      let newPredicate = document.getElementById("predicate-edit").value;
+      let newAction = document.getElementById("action-edit").value;
+
+      tree.editNode(tree.questionList[index-1], newPredicate, newAction);
+      alert("Edited Successfully");
+    }
+  };
+
+  //Check Type for Addd/Remove/Edit
+  function checkType(){
+    let index = parseInt(document.getElementById("question-edit").value);
+    if((typeof(index)!=="number") || (index>tree.questionList.length) || (isNaN(index))){
+      alert("You input wrong format or larger than the question amount");
+      document.getElementById("question-edit").value = "";
+    }
+  }
+  function checkAdd(){
+    let index = parseInt(document.getElementById("question-add").value);
+    if((typeof(index)!=="number") || (index>tree.questionList.length) || (isNaN(index))){
+      alert("You input wrong format or larger than the question amount");
+      document.getElementById("question-add").value = "";
+    }
+  }
+  function checkDelete(id){
+    let index = parseInt(document.getElementById(id).value);
+    if((typeof(index)!=="number") || (index>tree.questionList.length) || (isNaN(index))){
+      alert("You input wrong format or larger than the question amount");
+      document.getElementById(id).value = "";
+    }
+  }
+</script>
+
+</body>
+</html>
