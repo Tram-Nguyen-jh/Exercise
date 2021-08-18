@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="stylePixture.css"/>
+  <title>Pixture</title>
+  <!--Font-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+  </style>
+</head>
+
+<div class="hero-text-head">
+  <!--Background Pixture-->
+    <div class="vertical-line" id="show-vertical"> 
+      <span class="arrow">&#10094;</span> 
+      <span>PAIN TTHE POWER</span> 
+      BLAZ ROBAR 
+    </div>
+    <!--background-->
+    <img src="imagePixture/Pixture.png" id="space-left-img" alt="masthead">
+    
+    <!--Menu-->
+    <div class="icon" onclick="toggleMenu()" id="closed">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <div class="icon-email">
+      <img src="imagePixture/email.svg" alt="email">
+    </div>
+    
+    <!--Title-->
+    <div class="appear-mobile">
+      <h3>PAINT 
+        <span>YOUR</span>
+        PIXTURE</h3>
+      </div>
+      <div class="circle-border-pix">
+        <h5 class="rotate-text">your</h5>
+      </div>
+    
+    <!--Subtitle-->
+    <div class="image-content" id="left-align-ver">
+      <div class="image-title">
+        <p>Humble Beginings</p>
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        </span>
+        <p class="threedot"> &#8230; </p>
+      </div>
+      <div class="next-button">
+        <p>&#10095;</p>
+        April 19th 2016
+      </div>
+    </div>
+    <p class="threedot-bottom"> &#8230; </p>
+
+  </div>
+
+  <!--Background decor-->
+  <div class="purple-decor">
+    <img src="imagePixture/liquid-purple.png">
+  </div>
+ 
+
+  <!--Carousel Picture Worth Seeing-->
+  <div class="carousel-title">PICTURES WORTH SEEING
+  </div>
+  <div class = "carousel-collection" id="carousel-collection">
+    <!-- <div class="carousel-item">
+      <div class="background-item">
+        <img class="carousel-bg" src="imagePixture/FirstCarousel/CarouselItem0.png">
+        <div class="like-indicator">
+          <img src="imagePixture/heart.png"></img>
+          382
+        </div>
+        <div class="decor"></div>
+      </div>
+      
+      <div class="item-content"> 
+        <h3>BLISS TEXTURE</h3>
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+        <div class="item-option">
+          <div class="option-comment">
+            <img src="imagePixture/commentIcon.png">
+            <p>374 comments</p>
+        </div>
+  
+        <div class="option-view-more">&#8230; </div>
+        </div>  
+        
+      </div>
+    </div> 
+    </div>  -->
+    <img class="carousel-arrowbtn" src="imagePixture/left-arrow.png">
+  </div>
+  
+
+  <script>
+    for (let i = 0; i < 4; i ++){
+      let h3 = "BLISS TEXTURE";
+      if (i % 2 != 0) h3 = "DECAYED";
+      document.getElementById("carousel-collection").innerHTML += " \n \
+      <div class='carousel-item'> \n \
+      <div class='background-item'> \n \
+        <img class='carousel-bg' src=\"imagePixture/FirstCarousel/CarouselItem"+ i +".png\"> \n \
+        <div class='like-indicator'> \n \
+          <img src='imagePixture/heart.png'></img> \n \
+          382 \n \
+        </div> \n \
+        <div class='decor'></div> \n \
+      </div> \n \
+      <div class='item-content'> \n \
+        <h3>"+ h3 +"</h3> \n \
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span> \n \
+        <div class='item-option'> \n \
+          <div class='option-comment'>\n \
+            <img src='imagePixture/commentIcon.png'>\n \
+            <p>374 comments</p>\n \
+        </div>\n \
+        <div class='option-view-more'>&#8230; </div>\n \
+        </div>  \n \
+      </div>\n \
+    </div>"}
+
+  </script>
+  
+  <!--Background Mashead-->
+    <div class="hero-text-head">
+      <div class="vertical-line"> 
+        <span class="arrow">&#10094;</span> 
+        <span>PAIN TTHE POWER</span> 
+        BLAZ ROBAR 
+      </div>
+      <!--background-->
+      <img src="imagePixture/Masthead.png" alt="masthead">
+      
+      <!--Title-->
+      <h3>IT’S YOUR PASSION</h3>
+      <div class="circle-border">
+        <h5>only</h5>
+      </div>
+
+      <!--Subtitle-->
+      <div class="image-content">
+        <div class="image-title">
+          <p>Texture makes art</p>
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </span>
+          <p class="threedot"> &#8230; </p>
+        </div>
+        <div class="next-button">
+          <p>&#10095;</p>
+          April 19th 2016
+        </div>
+      </div>
+    </div>
+
+  <!--Background decor-->
+  <img class="graidnets" src="imagePixture/rainbow.png">
+  <div class="purple-decor-flip">
+    <img src="imagePixture/liquid-purple.png">
+ 
+  </div>
+
+  <!--Info 2 col-->
+  <div class="info-content">
+    <div class="info-para">
+      <span class="left-para">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+        <div>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+        </div>
+        <p>homes → </p> 
+        <p>
+          dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam 
+          aliquam quaerat voluptatem.</p>
+      </span>
+      <span class="right-para">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
+        in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+      </span>
+    </div>
+    <div class="vertical-date"> <span>24TH</span> JANUARY 2016 </div>
+  </div>
+  
+    <!--Carousel Articles Worth Reading-->
+  <div class="carousel-title">ARTICLES WORTH READING</div>
+  <div class = "carousel-collection-2" id="carousel-collection-2">
+    <img class="carousel-arrowbtn" src="imagePixture/left-arrow.png">
+  </div>
+
+  <script>
+    for (let i = 0; i < 4; i ++){
+      let h3 = "BLISS TEXTURE";
+      if (i % 2 != 0) h3 = "DECAYED";
+      document.getElementById("carousel-collection-2").innerHTML += " \n \
+      <div class='carousel-item'> \n \
+      <div class='background-item'> \n \
+        <img class='carousel-bg' src=\"imagePixture/SecondCarousel/CarouselItem"+ i +".png\"> \n \
+        <div class='like-indicator'> \n \
+          <img src='imagePixture/heart.png'></img> \n \
+          382 \n \
+        </div> \n \
+        <div class='decor'></div> \n \
+      </div> \n \
+      <div class='item-content'> \n \
+        <h3>"+ h3 +"</h3> \n \
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span> \n \
+        <div class='item-option'> \n \
+          <div class='option-comment'>\n \
+            <img src='imagePixture/commentIcon.png'>\n \
+            <p>374 comments</p>\n \
+        </div>\n \
+        <div class='option-view-more'>&#8230; </div>\n \
+        </div>  \n \
+      </div>\n \
+    </div>"}
+
+  </script>
+
+  <!--Features-->
+  <div class="features">
+    <div class="feature-col">
+      <div class="feature-item">
+        <p>Start-Up Resources</p>
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</span>
+      </div>
+      <div class="feature-item">
+        <p>Training & Funding</p>
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</span>
+      </div>
+      <div class="feature-item">
+        <p>Connect</p>
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in</span>
+      </div>
+      <div class="feature-item">
+        <p>Communicate</p>
+        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation</span>
+      </div>
+    </div>
+    <div class="vertical-date"> <span>24TH</span> JANUARY 2016 </div>
+  </div>
+  
+  <!--Background Jordan Hetzer-->
+  <div class="hero-red-liquid">
+    <div class="hero-text">
+      <p>TEXTURES BY</p>
+      <h3>Jordan Hetzer</h3>
+      <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</span>
+    </div>
+  </div>
+  <!--Footer-->
+  <footer>
+    <div class="footer-content">
+      <!--About-->
+      <div class="menu-section">
+        <div class="footer-left">
+          <p class="menu-title"> HOME </p>
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+            dolor in
+          </span>
+        </div>
+        <div class="footer-right">
+          <!--History-->
+          <ul class="menu-title"> HISTORY
+            <li> <a href="#">Resources</a></li> 
+            <li> <a href="#">Downloads and Updates</a></li> 
+            <li> <a href="#">Manuals</a></li> 
+            <li> <a href="#">Tech Specs</a></li> 
+            <li> <a href="#">System Status</a></li> 
+            <li> <a href="#">Accessibility</a></li> 
+        </ul>
+          <!--Contact-->
+          <ul class="menu-title-contact"> CONTACT
+            <li> Apple Store (Education Institutions) </li>
+            <li> 1300-551-927</li>
+            <li> Apple Store (Small Business)</li>
+            <li> 1300-369-095</li>
+          </ul>
+        </div>
+      
+      </div>
+      <!--Last line-->
+      <p class="last-line"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna  </p>
+    </div>
+  </footer>
+
+</body>
+</html>
