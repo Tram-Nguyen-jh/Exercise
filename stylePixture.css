@@ -54,25 +54,37 @@ body{
 }
 
 /*Carousel*/
+.wrapper{
+  overflow: hidden;
+}
 .carousel-collection{
   display: flex;
   overflow-x: auto;
+  cursor: grab;
+
   margin-bottom: 20px;
+
+  /*Hidden scrollbar*/
+  margin-bottom: -20px;
+  padding-bottom: 50px;
   position: relative;
-  margin-left: -50px;
+  /* margin-left: -50px; */
 }
 .carousel-arrowbtn{
   position: absolute;
   right: var(--alignrightunit);
   top: 30%;
   display: none;
+  /* z-index: 3; */
+  
 }
 .carousel-collection-2{
   display: none;
+  
   overflow-x: auto;
   margin-bottom: 20px;
   position: relative;
-  margin-left: -50px;
+  /* margin-left: -50px; */
   background: linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, #140328 57.86%);
 }
 .carousel-title{
@@ -559,7 +571,8 @@ footer{
   }
   /*Different in desktop version*/
   .carousel-collection, .carousel-collection-2{
-    margin-left: -150px;
+    /* margin-left: -150px; */
+    /* justify-content: center; */
   }
   .carousel-item{
     margin: 10px;

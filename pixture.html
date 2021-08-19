@@ -11,7 +11,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
   </style>
 </head>
-
+<body>
 <div class="hero-text-head">
   <!--Background Pixture-->
     <div class="vertical-line" id="show-vertical"> 
@@ -66,46 +66,58 @@
  
 
   <!--Carousel Picture Worth Seeing-->
-  <div class="carousel-title">PICTURES WORTH SEEING
-  </div>
-  <div class = "carousel-collection" id="carousel-collection">
-    <!-- <div class="carousel-item">
-      <div class="background-item">
-        <img class="carousel-bg" src="imagePixture/FirstCarousel/CarouselItem0.png">
-        <div class="like-indicator">
-          <img src="imagePixture/heart.png"></img>
-          382
+  <div class="carousel-title">PICTURES WORTH SEEING</div>
+  <div class="wrapper">
+    <div class = "carousel-collection" id="carousel-collection">
+      <!-- <div class="carousel-item">
+        <div class="background-item">
+          <img class="carousel-bg" src="imagePixture/FirstCarousel/CarouselItem0.png">
+          <div class="like-indicator">
+            <img src="imagePixture/heart.png"></img>
+            382
+          </div>
+          <div class="decor"></div>
         </div>
-        <div class="decor"></div>
-      </div>
-      
-      <div class="item-content"> 
-        <h3>BLISS TEXTURE</h3>
-        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-        <div class="item-option">
-          <div class="option-comment">
-            <img src="imagePixture/commentIcon.png">
-            <p>374 comments</p>
-        </div>
-  
-        <div class="option-view-more">&#8230; </div>
-        </div>  
         
-      </div>
-    </div> 
-    </div>  -->
-    <img class="carousel-arrowbtn" src="imagePixture/left-arrow.png">
+        <div class="item-content"> 
+          <h3>BLISS TEXTURE</h3>
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+          <div class="item-option">
+            <div class="option-comment">
+              <img src="imagePixture/commentIcon.png">
+              <p>374 comments</p>
+          </div>
+    
+          <div class="option-view-more">&#8230; </div>
+          </div>  
+          
+        </div>
+      </div> 
+      </div>  -->
+      <img class="carousel-arrowbtn" src="imagePixture/left-arrow.png" id="carousel-collection-arrowbtn">
+    </div>
   </div>
   
-
+<!--Function CheckAmountCard-->
   <script>
-    for (let i = 0; i < 4; i ++){
+    function checkAmountCard(id, amountCard){
+      let arrow = id + "-arrowbtn";
+      if (amountCard < 5) {
+        document.getElementById(id).style.justifyContent = "center";
+        document.getElementById(arrow).style.display = "none";}
+    }
+  </script>
+  <script>
+    let amount = 7;
+    checkAmountCard("carousel-collection", amount);
+    for (let i = 0; i < amount; i ++){
       let h3 = "BLISS TEXTURE";
+      let imageindex = i % 4; 
       if (i % 2 != 0) h3 = "DECAYED";
       document.getElementById("carousel-collection").innerHTML += " \n \
       <div class='carousel-item'> \n \
       <div class='background-item'> \n \
-        <img class='carousel-bg' src=\"imagePixture/FirstCarousel/CarouselItem"+ i +".png\"> \n \
+        <img class='carousel-bg' src=\"imagePixture/FirstCarousel/CarouselItem"+ imageindex +".png\"> \n \
         <div class='like-indicator'> \n \
           <img src='imagePixture/heart.png'></img> \n \
           382 \n \
@@ -190,17 +202,20 @@
     <!--Carousel Articles Worth Reading-->
   <div class="carousel-title">ARTICLES WORTH READING</div>
   <div class = "carousel-collection-2" id="carousel-collection-2">
-    <img class="carousel-arrowbtn" src="imagePixture/left-arrow.png">
+    <img class="carousel-arrowbtn" id="carousel-collection-2-arrowbtn" src="imagePixture/left-arrow.png">
   </div>
 
   <script>
-    for (let i = 0; i < 4; i ++){
+    let amountCard = 4;
+    checkAmountCard("carousel-collection-2", amountCard);
+    for (let i = 0; i < amountCard; i ++){
+      let imageindex = i % 4; 
       let h3 = "BLISS TEXTURE";
       if (i % 2 != 0) h3 = "DECAYED";
       document.getElementById("carousel-collection-2").innerHTML += " \n \
       <div class='carousel-item'> \n \
       <div class='background-item'> \n \
-        <img class='carousel-bg' src=\"imagePixture/SecondCarousel/CarouselItem"+ i +".png\"> \n \
+        <img class='carousel-bg' src=\"imagePixture/SecondCarousel/CarouselItem"+ imageindex +".png\"> \n \
         <div class='like-indicator'> \n \
           <img src='imagePixture/heart.png'></img> \n \
           382 \n \
@@ -219,7 +234,6 @@
         </div>  \n \
       </div>\n \
     </div>"}
-
   </script>
 
   <!--Features-->
@@ -293,6 +307,7 @@
       <p class="last-line"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna  </p>
     </div>
   </footer>
+
 
 </body>
 </html>
