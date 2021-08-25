@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Map - Marker</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
+ 
+<style>
+  .geocoder {
+    position: absolute;
+    z-index: 1;
+    /* right: 25px;
+    width: 25%; */
+    width: 50%;
+    left: 50%;
+    margin-left: -25%;
+    top: 50px;
+  }
+  .mapboxgl-ctrl-geocoder {
+    min-width: 100%;
+  }
+  #map {
+    margin-top: 0px;
+  }
+  .coordinates {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    padding: 5px 10px;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+    border-radius: 3px;
+    display: none;
+  }
+  .mapboxgl-popup {
+  max-width: 400px;
+  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+  .overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  }
+  
+  .overlay button {
+  font: 600 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  background-color: #3386c0;
+  color: #fff;
+  display: inline-block;
+  margin: 0;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  }
+  
+  .overlay button:hover {
+  background-color: #4ea0da;
+  }
+  #map-overlay {
+      position: absolute;
+      top: 50px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      margin-right: 20px;
+      margin-top: 20px;
+      padding: 15px 0 0 10px;
+      font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      overflow: auto;
+      width: 200px;
+      height: 30px;
+      border-radius: 5px;
+    }
+</style>
+<!--Animated travel-->
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+
+<div id="map"></div>
+<pre id="coordinates" class="coordinates"></pre>
+<div id="geocoder" class="geocoder"></div>
+
+<!--Distance-->
+<div id='map-overlay'>Distance: </div>
+
+<!--Button replay-->
+<div class="overlay">
+  <button id="replay">Replay</button>
+</div>
+
+<script>
+  //Initialize map
+	mapboxgl.accessToken = 'pk.eyJ1IjoidHJhbW5ndXllbjI3MDYiLCJhIjoiY2tzcHQ3ZjRvMDZpOTJycGQ5ZHRsYzFlYSJ9.6prXHF4VoX0P2ZeW-5GDOQ';
+  const coordinates = document.getElementById('coordinates');
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    // center: [-79.4512, 43.6568],
+    // zoom: 13,
+    center: [-96, 37.8],
+    zoom: 3
+  });
+  
+  // Add the control to the map.
+  const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+  });
+
+  // // Add the control to the map.
+  //   map.addControl(
+  //   new MapboxGeocoder({
+  //   accessToken: mapboxgl.accessToken,
+  //   mapboxgl: mapboxgl
+  //   })
+  //   );
+
+  // Set marker options.
+  const marker = new mapboxgl.Marker({
+    draggable: true
+    })
+    .setLngLat([0, 0])
+    .addTo(map);
+
+  //Drag Marker
+  function onDragEnd() {
+  const lngLat = marker.getLngLat();
+  coordinates.style.display = 'block';
+  coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+  }
+  
+  marker.on('dragend', onDragEnd);
+
+
+  document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+</script>
+
+<!--Info card-->
+<script> 
+  map.on('load', () => {
+  map.addSource('places', {
+  // This GeoJSON contains features that include an "icon"
+  // property. The value of the "icon" property corresponds
+  // to an image in the Mapbox Streets style's sprite.
+  'type': 'geojson',
+  'data': {
+  'type': 'FeatureCollection',
+  'features': [
+  {
+  'type': 'Feature',
+  'properties': {
+  'description':
+  '<strong>Make it Mount Pleasant</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
+  'icon': 'theatre-15'
+  },
+  'geometry': {
+  'type': 'Point',
+  'coordinates': [-77.038659, 38.931567]
+  }
+  },
+  {
+  'type': 'Feature',
+  'properties': {
+  'description':
+  '<strong>Mad Men Season Five Finale Watch Party</strong><p>Head to Lounge 201 (201 Massachusetts Avenue NE) Sunday for a <a href="http://madmens5finale.eventbrite.com/" target="_blank" title="Opens in a new window">Mad Men Season Five Finale Watch Party</a>, complete with 60s costume contest, Mad Men trivia, and retro food and drink. 8:00-11:00 p.m. $10 general admission, $20 admission and two hour open bar.</p>',
+  'icon': 'theatre-15'
+  },
+  'geometry': {
+  'type': 'Point',
+  'coordinates': [-77.003168, 38.894651]
+  }
+  },
+  {
+  'type': 'Feature',
+  'properties': {
+  'description':
+  '<strong>Big Backyard Beach Bash and Wine Fest</strong><p>EatBar (2761 Washington Boulevard Arlington VA) is throwing a <a href="http://tallulaeatbar.ticketleap.com/2012beachblanket/" target="_blank" title="Opens in a new window">Big Backyard Beach Bash and Wine Fest</a> on Saturday, serving up conch fritters, fish tacos and crab sliders, and Red Apron hot dogs. 12:00-3:00 p.m. $25.grill hot dogs.</p>',
+  'icon': 'bar-15'
+  },
+  'geometry': {
+  'type': 'Point',
+  'coordinates': [-77.090372, 38.881189]
+  }
+  },
+  {
+  'type': 'Feature',
+  'properties': {
+  'description':
+  '<strong>Ballston Arts & Crafts Market</strong><p>The <a href="http://ballstonarts-craftsmarket.blogspot.com/" target="_blank" title="Opens in a new window">Ballston Arts & Crafts Market</a> sets up shop next to the Ballston metro this Saturday for the first of five dates this summer. Nearly 35 artists and crafters will be on hand selling their wares. 10:00-4:00 p.m.</p>',
+  'icon': 'art-gallery-15'
+  },
+  'geometry': {
+  'type': 'Point',
+  'coordinates': [-77.111561, 38.882342]
+  }
+  },
+  {
+  'type': 'Feature',
+  'properties': {
+  'description':
+  '<strong>Seersucker Bike Ride and Social</strong><p>Feeling dandy? Get fancy, grab your bike, and take part in this year\'s <a href="http://dandiesandquaintrelles.com/2012/04/the-seersucker-social-is-set-for-june-9th-save-the-date-and-start-planning-your-look/" target="_blank" title="Opens in a new window">Seersucker Social</a> bike ride from Dandies and Quaintrelles. After the ride enjoy a lawn party at Hillwood with jazz, cocktails, paper hat-making, and more. 11:00-7:00 p.m.</p>',
+  'icon': 'bicycle-15'
+  },
+  'geometry': {
+  'type': 'Point',
+  'coordinates': [-77.052477, 38.943951]
+  }
+  },
+  {
+  'type': 'Feature',
+  'properties': {
+  'description':
+  '<strong>Capital Pride Parade</strong><p>The annual <a href="http://www.capitalpride.org/parade" target="_blank" title="Opens in a new window">Capital Pride Parade</a> makes its way through Dupont this Saturday. 4:30 p.m. Free.</p>',
+  'icon': 'rocket-15'
+  },
+  'geometry': {
+  'type': 'Point',
+  'coordinates': [-77.043444, 38.909664]
+  }
+  },
+  {
+  'type': 'Feature',
+  'properties': {
+  'description':
+  '<strong>Muhsinah</strong><p>Jazz-influenced hip hop artist <a href="http://www.muhsinah.com" target="_blank" title="Opens in a new window">Muhsinah</a> plays the <a href="http://www.blackcatdc.com">Black Cat</a> (1811 14th Street NW) tonight with <a href="http://www.exitclov.com" target="_blank" title="Opens in a new window">Exit Clov</a> and <a href="http://godsilla.bandcamp.com" target="_blank" title="Opens in a new window">Gods’illa</a>. 9:00 p.m. $12.</p>',
+  'icon': 'music-15'
+  },
+  'geometry': {
+  'type': 'Point',
+  'coordinates': [-77.031706, 38.914581]
+  }
+  },
+  {
+  'type': 'Feature',
+  'properties': {
+  'description':
+  '<strong>A Little Night Music</strong><p>The Arlington Players\' production of Stephen Sondheim\'s  <a href="http://www.thearlingtonplayers.org/drupal-6.20/node/4661/show" target="_blank" title="Opens in a new window"><em>A Little Night Music</em></a> comes to the Kogod Cradle at The Mead Center for American Theater (1101 6th Street SW) this weekend and next. 8:00 p.m.</p>',
+  'icon': 'music-15'
+  },
+  'geometry': {
+  'type': 'Point',
+  'coordinates': [-77.020945, 38.878241]
+  }
+  },
+  {
+  'type': 'Feature',
+  'properties': {
+  'description':
+  '<strong>Truckeroo</strong><p><a href="http://www.truckeroodc.com/www/" target="_blank">Truckeroo</a> brings dozens of food trucks, live music, and games to half and M Street SE (across from Navy Yard Metro Station) today from 11:00 a.m. to 11:00 p.m.</p>',
+  'icon': 'music-15'
+  },
+  'geometry': {
+  'type': 'Point',
+  'coordinates': [-77.007481, 38.876516]
+  }
+  }
+  ]
+  }
+  });
+  // Add a layer showing the places.
+  map.addLayer({
+  'id': 'places',
+  'type': 'symbol',
+  'source': 'places',
+  'layout': {
+  'icon-image': '{icon}',
+  'icon-allow-overlap': true
+  }
+  });
+   
+  // When a click event occurs on a feature in the places layer, open a popup at the
+  // location of the feature, with description HTML from its properties.
+  map.on('click', 'places', (e) => {
+  // Copy coordinates array.
+  const coordinates = e.features[0].geometry.coordinates.slice();
+  const description = e.features[0].properties.description;
+   
+  // Ensure that if the map is zoomed out such that multiple
+  // copies of the feature are visible, the popup appears
+  // over the copy being pointed to.
+  while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+  coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+  }
+   
+  new mapboxgl.Popup()
+  .setLngLat(coordinates)
+  .setHTML(description)
+  .addTo(map);
+  });
+   
+  // Change the cursor to a pointer when the mouse is over the places layer.
+  map.on('mouseenter', 'places', () => {
+  map.getCanvas().style.cursor = 'pointer';
+  });
+   
+  // Change it back to a pointer when it leaves.
+  map.on('mouseleave', 'places', () => {
+  map.getCanvas().style.cursor = '';
+  });
+  });
+</script> 
+
+<!--Animated Effect-->
+<script>
+  // San Francisco
+  const origin = [-122.414, 37.776];
+  
+  // Washington DC
+  const destination = [-77.032, 38.913];
+  
+  //Add marker to 2 points
+  const originMarker = new mapboxgl.Marker({
+        color: '#4C96E0',
+
+        })
+        .setLngLat(origin) // marker position using variable 'to'
+        .addTo(map); //add marker to map
+
+  const destinationMarker = new mapboxgl.Marker({
+        color: '#9F5CFA',
+        draggable: true
+        })
+        .setLngLat(destination) // marker position using variable 'from'
+        .addTo(map); //add marker to map 
+
+  const options = {
+    units: 'miles'
+  }; // units can be degrees, radians, miles, or kilometers, just be sure to change the units in the text box to match. 
+
+  var distance = turf.distance(origin, destination, options);
+
+  var value = document.getElementById('map-overlay')
+  value.innerHTML = "Distance: " + distance.toFixed([2]) + " miles"
+
+  // A simple line from origin to destination.
+  const route = {
+  'type': 'FeatureCollection',
+  'features': [
+    {
+    'type': 'Feature',
+    'geometry': {
+    'type': 'LineString',
+    'coordinates': [origin, destination]}
+    }
+  ]};
+  
+  // A single point that animates along the route.
+  // Coordinates are initially set to origin.
+  const point = {
+  'type': 'FeatureCollection',
+  'features': [
+  {
+  'type': 'Feature',
+  'properties': {},
+  'geometry': {
+  'type': 'Point',
+  'coordinates': origin
+  }
+  }
+  ]
+  };
+  
+  // Calculate the distance in kilometers between route start/end point.
+  const lineDistance = turf.length(route.features[0]);
+  
+  const arc = [];
+  
+  // Number of steps to use in the arc and animation, more steps means
+  // a smoother arc and animation, but too many steps will result in a
+  // low frame rate
+  const steps = 500;
+  
+  // Draw an arc between the `origin` & `destination` of the two points
+  for (let i = 0; i < lineDistance; i += lineDistance / steps) {
+  const segment = turf.along(route.features[0], i);
+  arc.push(segment.geometry.coordinates);
+  }
+  
+  // Update the route with calculated arc coordinates
+  route.features[0].geometry.coordinates = arc;
+  
+  // Used to increment the value of the point measurement against the route.
+  let counter = 0;
+  
+  map.on('load', () => {
+  // Add a source and layer displaying a point which will be animated in a circle.
+  map.addSource('route', {
+  'type': 'geojson',
+  'data': route
+  });
+  
+  map.addSource('point', {
+  'type': 'geojson',
+  'data': point
+  });
+  
+  map.addLayer({
+  'id': 'route',
+  'source': 'route',
+  'type': 'line',
+  'paint': {
+  'line-width': 2,
+  'line-color': '#007cbf'
+  }
+  });
+  
+  map.addLayer({
+  'id': 'point',
+  'source': 'point',
+  'type': 'symbol',
+  'layout': {
+  // This icon is a part of the Mapbox Streets style.
+  // To view all images available in a Mapbox style, open
+  // the style in Mapbox Studio and click the "Images" tab.
+  // To add a new image to the style at runtime see
+  // https://docs.mapbox.com/mapbox-gl-js/example/add-image/
+  'icon-image': 'airport-15',
+  'icon-rotate': ['get', 'bearing'],
+  'icon-rotation-alignment': 'map',
+  'icon-allow-overlap': true,
+  'icon-ignore-placement': true
+  }
+  });
+  
+  function animate() {
+  const start =
+  route.features[0].geometry.coordinates[
+  counter >= steps ? counter - 1 : counter
+  ];
+  const end =
+  route.features[0].geometry.coordinates[
+  counter >= steps ? counter : counter + 1
+  ];
+  if (!start || !end) return;
+  
+  // Update point geometry to a new position based on counter denoting
+  // the index to access the arc
+  point.features[0].geometry.coordinates =
+  route.features[0].geometry.coordinates[counter];
+  
+  // Calculate the bearing to ensure the icon is rotated to match the route arc
+  // The bearing is calculated between the current point and the next point, except
+  // at the end of the arc, which uses the previous point and the current point
+  point.features[0].properties.bearing = turf.bearing(
+  turf.point(start),
+  turf.point(end)
+  );
+  
+  // Update the source with this new data
+  map.getSource('point').setData(point);
+  
+  // Request the next frame of animation as long as the end has not been reached
+  if (counter < steps) {
+  requestAnimationFrame(animate);
+  }
+  
+  counter = counter + 1;
+  }
+  
+  document.getElementById('replay').addEventListener('click', () => {
+  // Set the coordinates of the original point back to origin
+  point.features[0].geometry.coordinates = origin;
+  
+  // Update the source layer
+  map.getSource('point').setData(point);
+  
+  // Reset the counter
+  counter = 0;
+  
+  // Restart the animation
+  animate(counter);
+  });
+  
+  // Start the animation
+  animate(counter);
+});
+</script>
+</body>
+</html>
