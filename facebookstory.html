@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook Story</title>
+  <!--Style and script for Carousel-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="styleFbStory.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!--Script for swipe event-->
+  <script src="swiped-events-master/src/swiped-events.js"></script>
+</head>
+<body data-swipe-threshold="100">
+  
+<!--Story List-->
+ <div class="fb-story" class="container">
+
+  
+   <!--Story's list of 1 User-->
+    <div class="account-story wait" id="deactiveCarousel" class="carousel slide">
+      <!-- Indicators -->
+      <div class="pause">
+      <ol class="carousel-indicators">
+        <li class="item1 active" class="progress"></li>
+        <li class="item2" class="progress"></li>
+        <li class="item3" class="progress"></li>
+        <li class="item4" class="progress"></li>
+      </ol>
+    </div>
+    
+    <!--Account Info-->
+    <div class="account-info">
+      <img src="imageStory/avatar1.jpg">
+      <span> Pikapika </span>
+    </div>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="imageStory/storyUser_1a.jpg" alt="Chania" width="460" height="345">
+        <div class="carousel-caption">
+          <h3>Chania</h3>
+          <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        </div>
+      </div>
+      <div class="item">
+        <img src="imageStory/storyUser_3a.jpg" alt="Chania" width="460" height="345">
+        <div class="carousel-caption">
+          <h3>Chania</h3>
+          <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        </div>
+      </div>
+      <div class="item">
+        <img src="imagePixture/secondCarousel/CarouselItem2.png" alt="Flower" width="460" height="345">
+        <div class="carousel-caption">
+          <h3>Flowers</h3>
+          <p>Beautiful flowers in Kolymbari, Crete.</p>
+        </div>
+      </div>
+      <div class="item">
+        <img src="imagePixture/secondCarousel/CarouselItem3.png" alt="Flower" width="460" height="345">
+        <div class="carousel-caption">
+          <h3>Flowers</h3>
+          <p>Beautiful flowers in Kolymbari, Crete.</p>
+        </div>
+      </div>
+    </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#activeCarousel" role="button">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#activeCarousel" role="button">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    
+    </div>
+    
+    <div class="account-story wait" id="deactiveCarousel" class="carousel slide">
+      <!-- Indicators -->
+      <div class="pause">
+      <ol class="carousel-indicators">
+        <li class="item1 active" class="progress"></li>
+        <li class="item2" class="progress"></li>
+      </ol>
+    </div>
+    
+    <!--Account Info-->
+    <div class="account-info">
+      <img src="imageStory/avatar2.jpg">
+      <span> Doraemon </span>
+    </div>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="imageStory/storyUser_2c.jpg" alt="Chania">
+        <div class="carousel-caption">
+          <h3>Chania</h3>
+          <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        </div>
+      </div>
+      <div class="item">
+        <img src="imageStory/storyUser_1c.jpg" alt="Chania">
+        <div class="carousel-caption">
+          <h3>Chania</h3>
+          <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        </div>
+      </div>
+    </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#activeCarousel" role="button">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#activeCarousel" role="button">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    
+    </div>
+
+    <div class="account-story wait" id="activeCarousel" class="carousel slide">
+        <!-- Indicators -->
+
+          <ol class="carousel-indicators">
+            <li class="item1 active" class="progress"></li>
+            <li class="item2" class="progress"></li>
+            <li class="item3" class="progress"></li>
+            <li class="item4" class="progress"></li>
+          </ol>
+
+
+        <!--Account Info-->
+        <div class="account-info">
+          <img src="imageStory/avatar0.jpg">
+          <span> ubyie._ </span>
+        </div>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="imageStory/storyUser_school.jpg" alt="Chania" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>Chania</h3>
+              <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="imagePixture/secondCarousel/CarouselItem1.png" alt="Chania" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>Chania</h3>
+              <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="imagePixture/secondCarousel/CarouselItem2.png" alt="Flower" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>Flowers</h3>
+              <p>Beautiful flowers in Kolymbari, Crete.</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="imagePixture/secondCarousel/CarouselItem3.png" alt="Flower" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>Flowers</h3>
+              <p>Beautiful flowers in Kolymbari, Crete.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#activeCarousel" role="button">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#activeCarousel" role="button">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+      <!--Waiting Story-->
+    <div class="account-story wait" id="deactiveCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <div class="pause">
+          <ol class="carousel-indicators">
+            <li class="item1 active" class="progress"></li>
+            <li class="item2" class="progress"></li>
+            <li class="item3" class="progress"></li>
+            <li class="item4" class="progress"></li>
+          </ol>
+        </div>
+        
+        <!--Account Info-->
+        <div class="account-info">
+          <img src="imageStory/avatar3.jpg">
+          <span> ._iamtinkerBell </span>
+        </div>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="imageStory/storyUser_1b.jpg" alt="Chania" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>Shooting day</h3>
+              <p>Location: OPalm Coffee, Sai gon</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="imageStory/storyUser_2b.jpg" alt="Chania" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>With my friends</h3>
+              <p>Another coffee shop: Machien</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="imageStory/storyUser_3b.jpg" alt="Flower" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>New product release</h3>
+              <p>New version for fruit frames</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="imageStory/storyUser_4b.jpg" alt="Flower" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>Fav Book</h3>
+              <p>Little story vs calendar</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#activeCarousel" role="button">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#activeCarousel" role="button">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+    </div>
+
+    <div class="account-story wait" id="deactiveCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <div class="pause">
+          <ol class="carousel-indicators">
+            <li class="item1 active" class="progress"></li>
+            <li class="item2" class="progress"></li>
+            <li class="item3" class="progress"></li>
+            <li class="item4" class="progress"></li>
+          </ol>
+        </div>
+        
+        <!--Account Info-->
+        <div class="account-info">
+          <img src="imageStory/avatar4.jpg">
+          <span> SakuraxLisyaoran </span>
+        </div>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="imageStory/storyUser_2d.jpg" alt="Chania" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>Chania</h3>
+              <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="imageStory/storyUser_1d.jpg" alt="Chania" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>Chania</h3>
+              <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="imageStory/storyUser_3d.jpg" alt="Flower" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>Flowers</h3>
+              <p>Beautiful flowers in Kolymbari, Crete.</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="imageStory/storyUser_4d.jpg" alt="Flower" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>Flowers</h3>
+              <p>Beautiful flowers in Kolymbari, Crete.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#activeCarousel" role="button">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#activeCarousel" role="button">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+        
+    </div>
+    <div class="introduction">
+      <img src="imageStory/information.svg"> Introduction
+      <span class="tooltiptext">
+        - <b>Switch to another</b> user's story by click on new story <br>
+        - Click left/right arrow to view previous/next story <br>
+        - <b> Pause</b> story from loading by hover on story or button controls <br>
+        <i>Story changes to next story of a user automatically after 5s</i>
+      </span>
+    </div>
+ </div>
+</body>
+
+<!--Setup carousel and handle button-->
+<script>
+  $(document).ready(function(){
+    // Activate Carousel
+    $("#activeCarousel").carousel({interval: 5000, pause: "hover"});
+    $("#activeCarousel").removeClass("wait");
+    // $("#activeCarousel").classList.removeClass('wait');
+
+    // Enable Carousel Indicators
+    // $(".item1").click(function(){
+    //   $("#activeCarousel").carousel(0);
+    // });
+    // $(".item2").click(function(){
+    //   $("#activeCarousel").carousel(1);
+    // });
+    // $(".item3").click(function(){
+    //   $("#activeCarousel").carousel(2);
+    // });
+    // $(".item4").click(function(){
+    //   $("#activeCarousel").carousel(3);
+    // });
+      
+    // Enable Carousel Controls
+    $(".left").click(function(event){
+      event.stopPropagation();
+      leftToPrevious();
+      $("#activeCarousel").carousel("prev");
+    });
+    $(".right").click(function(event){
+      event.stopPropagation();
+      rightToNext();
+      $("#activeCarousel").carousel("next");
+    });
+  });
+
+  //Mark Seen Story
+  function markSeenStory(){
+    $('#activeCarousel').on('slid.bs.carousel', function (e) {
+      
+    let allEle = $('#activeCarousel .carousel-indicators li');
+    let ele = $('#activeCarousel .carousel-indicators li.active');
+    // alert("AllInMark: "+allEle.length+"index of beginning: "+allEle.index(ele));
+    const progress = Array.from(document.querySelectorAll('#activeCarousel .carousel-indicators li'));
+
+    for(let i = 0; i< allEle.length; i ++){
+      if(allEle[i].getAttribute("class").search("active") != -1) {
+        hideFirstArrow(i);
+        if(i != 0) {
+          allEle[i-1].classList.add("passed");
+        }
+        else {
+          progress.map((el) => {
+          el.classList.remove('passed');
+          });
+        }
+        // alert("next index active is: " + i);
+      }
+    }
+    });
+  }
+  
+  //If it is the first story in Story List -> hide left arrow
+  function hideFirstArrow(){
+    let eleInFirstSory = $(".account-story:first-child .carousel-indicators li");
+
+    // let viewportWidth = window.innerWidth;
+    //   // Only available on mobile view  
+    // if(viewportWidth > 1024){
+      if(eleInFirstSory[0].getAttribute("class").search("active") != -1){
+        $(".account-story:first-child .carousel-control.left").css(
+          "display", "none")
+      } 
+      else{
+        $(".account-story:first-child .carousel-control.left").css(
+          "display", "block")
+      }
+    // }
+  }
+
+  //Click Right Arrow button to view next user's story
+  function rightToNext(){
+    // $('#activeCarousel .right.carousel-control').click(function(){
+    let allEle = $('#activeCarousel .carousel-indicators li');
+    let ele = $('#activeCarousel .carousel-indicators li.active');
+
+    // alert("All:"+allEle.length+"Active:"+allEle.index(ele));
+
+      if(allEle[allEle.length-1].getAttribute("class").search("active") != -1) {
+      let list = $('.account-story'); //all containers
+      let index = list.index($("#activeCarousel.account-story")); //current container
+
+      index = (index + 1) % list.length; //increment with wrap
+
+      let newActive = list.eq(index);
+      newActive.removeClass("wait");
+
+      let active2deactive = document.getElementById("activeCarousel");
+      active2deactive.classList.add('wait');
+      active2deactive.id = "deactiveCarousel";
+
+      newActive[0].id = "activeCarousel";
+      startnewCarousel();
+      }
+    // });
+}
+  
+ //Click Left Arrow button to view previous user's story
+  function leftToPrevious(){
+    let allEle = $('#activeCarousel .carousel-indicators li');
+    let ele = $('#activeCarousel .carousel-indicators li.active');
+      if(allEle[0].getAttribute("class").search("active") != -1) {
+      let list = $('.account-story'); //all containers
+      let index = list.index($("#activeCarousel.account-story")); //current container
+
+      index = (index - 1) % list.length; //increment with wrap
+
+      let newActive = list.eq(index);
+      newActive.removeClass("wait");
+
+      let active2deactive = document.getElementById("activeCarousel");
+      active2deactive.classList.add('wait');
+      active2deactive.id = "deactiveCarousel";
+
+      newActive[0].id = "activeCarousel";
+      startnewCarousel();
+      }
+    // });
+}
+  
+  hideFirstArrow();
+  markSeenStory();
+
+  //Handle click left - right on screen
+  $(".account-story").click(function Touchable(e){
+      let offset = $(this).offset(); 
+      let pos_x = e.pageX - offset.left;
+      let middle = $(this).outerWidth() / 2;
+      let viewportWidth = window.innerWidth;
+      $(".account-story:hover .carousel-indicators li").css(
+          "animation-play-state", "running");
+      // Only available on mobile view  
+      if(viewportWidth <= 1024){
+        if(pos_x < middle){
+          $("#activeCarousel").carousel("prev");
+        }
+        else{
+          $("#activeCarousel").carousel("next");
+        }
+      }
+    });
+
+  //Handle choose another user's story
+  $(".account-story.wait").click(function WaitForView(){
+      let viewportWidth = window.innerWidth;
+
+      if(viewportWidth > 1024){
+      let newActive = $(this);
+
+      //Remove the new active from waiting story to be clicked
+      newActive.removeClass("wait");
+
+      let active2deactive = document.getElementById("activeCarousel");
+      active2deactive.classList.add('wait');
+      active2deactive.id = "deactiveCarousel";
+      // alert("Id of new active: " + newActive[0].id);
+      newActive[0].id = "activeCarousel";
+      
+      startnewCarousel();
+      }
+    });
+</script>
+
+<!--Click to choose new user to view their story-->
+<script>
+    function startnewCarousel(){
+    //Deactive old Carousel  
+    $(".account-story.wait").carousel('pause');  
+
+    // Activate Carousel
+    $("#activeCarousel").carousel({interval: 5000, pause: "hover"});
+
+    $("#activeCarousel .carousel-indicator .item1").removeClass("passed");
+    $("#activeCarousel .carousel-indicator .item1").addClass("active");
+
+    markSeenStory();
+
+    $("#activeCarousel .carousel-indicator .item2").removeClass("active");
+    $("#activeCarousel .carousel-inner .item")[0].addClass("active");
+    $("#activeCarousel .carousel-inner .item")[1].removeClass("active");
+
+  }
+</script>
+
+<!--Handle swipe to next story-->
+<script>
+  window.onload = function() {
+      document.addEventListener('swiped', function(e) {
+          console.log(e.type);
+          console.log(e.target);
+          console.log(e.detail);
+          console.log(e.dir);
+      });
+
+      document.addEventListener('swiped-left', function(e) {
+          swipeToNext();
+      });
+
+      document.addEventListener('swiped-right', function(e) {
+          swipeToPrevious();
+      });
+  };
+   //Swipe left to view next user's story
+  function swipeToNext(){
+    let list = $('.account-story'); //all containers
+    let index = list.index($("#activeCarousel.account-story")); //current container
+
+    index = (index + 1) % list.length; //increment with wrap
+
+    let newActive = list.eq(index);
+    newActive.removeClass("wait");
+
+    let active2deactive = document.getElementById("activeCarousel");
+    active2deactive.classList.add('wait');
+    active2deactive.id = "deactiveCarousel";
+
+    newActive[0].id = "activeCarousel";
+    startnewCarousel();
+}
+  
+ //Swipe right to view previous user's story
+  function swipeToPrevious(){
+    let list = $('.account-story'); //all containers
+    let index = list.index($("#activeCarousel.account-story")); //current container
+
+    index = (index - 1) % list.length; //increment with wrap
+
+    let newActive = list.eq(index);
+    newActive.removeClass("wait");
+
+    let active2deactive = document.getElementById("activeCarousel");
+    active2deactive.classList.add('wait');
+    active2deactive.id = "deactiveCarousel";
+
+    newActive[0].id = "activeCarousel";
+    startnewCarousel();
+}
+  
+</script>
+</html>

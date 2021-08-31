@@ -1,0 +1,285 @@
+:root {
+  --black: #140328;
+  --blackCarouselTitle: #0C2539;
+  --white: #fff;
+  --grey: #989791;
+  --greyCarouselContent: #677278;
+  --lightgrey: #D6D6D6;
+}
+
+.fb-story{
+  overflow-x: auto;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--black);
+}
+/*Introduction Tooltip*/
+.introduction{
+  right: 10px;
+  top: 10px;
+  position: fixed;
+  display: none;
+  color: var(--white);
+  /* position: relative; */
+}
+.introduction .tooltiptext {
+  visibility: hidden;
+  width: 350px;
+  background-color: #1f1e1e;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 5;
+  top: 150%;
+  /* left: 50%; */
+  margin-left: -350px;
+}
+
+.introduction .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+.introduction:hover .tooltiptext {
+  visibility: visible;
+}
+.tooltiptext i{
+  color:#C4C4C4; font-size: 12px;
+}
+
+.account-story{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex: 0 0 auto;
+}
+.account-story:first-child{
+  margin-left: 400px;
+}
+/* .account-story:first-child .carousel-control.left{
+  display: none;
+} */
+.account-story:last-child{
+  margin-right: 400px;
+}
+
+/*User Info*/
+.account-info{
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 16px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;;
+}
+.account-info img{
+  width: 42px;
+  height: 42px;
+  border-radius: 50px;
+  margin-right: 10px;
+}
+
+/*Story Content of Each User*/
+.carousel-inner{
+  height: 100%;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  width: 100%;
+  object-fit: cover;
+  height: 100vh;
+  border-radius: 8px;
+}
+
+/*Control Button: Pre - Next*/
+.carousel-control{
+  border-radius: 50px;
+  color: black;
+  font-size: 15px;
+  width: 42px;
+  height: 42px;
+  background-color: aliceblue;
+  margin: 20% auto;
+  text-shadow: 0 1px 2px rgba(0,0,0,.0);
+  background-color: rgba(0,0,0,0);
+  opacity: .7;
+  display: none;
+}
+.carousel-control:hover{
+  color: black;
+}
+.carousel-control.right {
+  right: -60px; 
+  top: 35%;
+  background-image: linear-gradient(45deg, white, white);
+}
+.carousel-control.left{
+  left: -60px;
+  top: 35%;
+  background-image: linear-gradient(45deg, white, white);
+}
+
+/*Indicator*/
+.carousel-indicators{
+  top: 10px;
+  height: 10px;
+  position: absolute;
+	width: 100%;
+  margin: 0;
+  left: 0;
+ 	right: 0;
+ 	display: flex;
+
+  cursor: pointer; 
+}
+
+.carousel-indicators li {
+	flex-grow: 1;  /* make all indicator li similarly stretched */
+	height: 3px;
+  margin: 0px 3px;
+  background-color: var(--grey);
+  border: #666;
+
+  background-image: -webkit-linear-gradient(left, 
+    rgba(255,255,255,.5) 0%,
+    rgba(255,255,255,.5) 50%,
+    rgba(88, 89, 104,.5) 50.001%,
+    rgba(88, 89, 104,.5) 100%
+  );
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-color: #666;
+    background-position: 100% 50%;
+    animation-timing-function: linear;
+    animation-delay: .2s;
+}
+
+  @keyframes loaderStory {
+  0%   { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+  }
+
+.carousel-indicators li.active{
+	/* background-color: var(--white) ; */
+  animation-name: loaderStory;
+  animation-duration: 5s;
+  height: 3px;
+  margin: 0px 3px;
+}
+.carousel-indicators li.passed{
+  background-position: 0% 0; 
+  background-color: var(--white);
+}
+
+.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, 
+.carousel-control .icon-next, .carousel-control .icon-prev {
+  font-size: 20px;
+}
+
+.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
+  right: 6px;
+  margin-right: 0px;}
+
+.carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
+  left: 6px;
+  margin-left: 0px;}
+
+.account-story:hover .carousel-indicators li {
+  animation-play-state: paused;
+}
+
+/*Waiting list*/
+.account-story.wait {
+  margin: 0 40px;
+  display: none;
+}
+.account-story.wait > .carousel-inner > .item > img{
+  width: 100%;
+  object-fit: cover;
+  height: 45vh;
+  border-radius: 8px;
+}
+.account-story.wait > .carousel-inner > .item > .carousel-caption{
+  display: none;
+}
+.account-story.wait > .account-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: calc(45vh/2 - 36px - 20px);
+  left: calc(15vw/2 - 36px - 10px);
+}
+.account-story.account-story.wait > .carousel-indicators{
+  display: none;
+}
+
+.account-story.wait > .account-info > img {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  width: 72px;
+  height: 72px;
+}
+/*Deactive button control n Indicator*/
+.account-story.wait > .pause, .account-story.wait > .carousel-control{
+  display: none;
+}
+  
+@media only screen and (max-width: 1024px) {
+  .account-story:first-child{
+    margin-left: 0px;
+  }
+  .account-story:last-child{
+    margin-right: 0px;
+  }
+}
+
+@media screen and (min-width:1128px){
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .introduction{
+    display: block;
+  }
+  .fb-story::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .fb-story {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .account-story{
+    width: 30vw;
+    height: 90vh;
+    margin: 0 50px;
+  }
+
+  .carousel-control{
+    display: block;
+  }
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+    height: 90vh;
+  }
+
+  /*Waiting list Story*/
+  .account-story.wait{
+    display: block;
+    width: 15vw;
+    height: 45vh;
+  }
+}
