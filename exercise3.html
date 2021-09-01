@@ -8,87 +8,119 @@
   <link rel="stylesheet" type="text/css" href="styleExercise3.css"/>
 </head>
 <body>
-  
 <!--Display Question and Button-->
 <h1 style="text-align: center;">Decision Question Tree</h1>
-<div class="form">
-  <p style="font-size: 24px; font-weight: 700;" id="question"></p>
-  <p id="ans"></p>
-  <button class="btn-submit" id="btn"> Submit </button>
+<div class="page">
+  <div class="first-col">
+    <div class="form">
+      <p style="font-size: 24px; font-weight: 700;" id="question"></p>
+      <p id="ans"></p>
+      <button class="btn-submit" id="btn"> Submit </button>
+    </div>
+  
+     <!--Button Functionality-->
+     <div class="btn">
+      <button class="btn-add" onclick="addQuestion()" id="btn-add"> Add 
+        <span class="tooltip-add"> Add new question to list </span>
+      </button>
+
+      <button class="btn-delete" onclick="deleteQuestion()" id="btn-delete"> Delete 
+        <span class="tooltip-delete"> Delete question from list </span>
+      </button>
+
+      <button class="btn-edit" onclick="editQuestion()"id="btn-edit"> Edit 
+        <span class="tooltip-edit"> Change predicate or action </span>
+      </button>
+    </div> 
+  
+    <!--Display Add/Remove/Edit Section-->
+    <div id="displayQuestionList" style="overflow-x:auto; display: none;">
+      <!-- <table id="table-question">
+        <caption> Question List </caption>
+        <tr style="font-weight: 700;">
+          <td> Predicate</td>
+          <td> Action </td> 
+        </tr>
+      </table> -->
+    
+      <!--Edit Section-->
+      <div id="edit" style="display: none;">
+        <table>
+          <tr>
+            <td> Question Number </td>
+            <td> <input type='text'id="question-edit" size=50 onchange="checkType()" placeholder="Choose question No. to edit. Ex: 2"> </td>
+          </tr>
+          <tr>
+            <td> New Predicate </td>
+            <td> <input type='text'id="predicate-edit" size=50 placeholder="Input new option for question. Ex: Between 14 and 17"> </td>
+          </tr>
+          <tr>
+            <td> New Action </td>
+            <td> <input type='text'id="action-edit" size=50 placeholder="Input next question. Ex: Are you studying at Secondary school ?. "> </td>
+          </tr>
+        </table>
+        <button id = "btn-submit-change"> Change </button>
+        <button id = "btn-close" onclick="closeTab()"> Close </button>
+      </div>
+    
+      <!--Add Section-->
+      <div id="add" style="display: none;">
+        <table>
+          <tr>
+            <td> Add option for question </td>
+            <td> <input type='text'id="question-add" size=50 onchange="checkAdd()" placeholder="Input a question number - Ex.: 5 "> </td>
+          </tr>
+          <tr>
+            <td> New Predicate </td>
+            <td> <input type='text'id="predicate-add" size=50 placeholder="Input new option to question"> </td>
+          </tr>
+          <tr>
+            <td> New Action </td>
+            <td> <input type='text'id="action-add" size=50 placeholder="Input next question to appear after choose above option"> </td>
+          </tr>
+        </table>
+        <button id = "btn-submit-add"> Add Question </button>
+        <button id = "btn-close" onclick="closeTab()"> Close </button>
+      </div>
+    
+      <!--Delete Section-->
+      <div id="delete" style="display: none;">
+        <table>
+          <tr>
+            <td> Choose question root </td>
+            <td> <input type='text'id="question-root-delete" size=50 onchange="checkDelete(id)" placeholder="Input question root number. Ex: 5"> </td>
+          </tr>
+          <tr>
+            <td> Choose question option to delete </td>
+            <td> <input type='text'id="question-option-delete" onchange="checkDelete(id)" size=50 placeholder="Input a option number to delete. Ex: 8"> </td>
+          </tr>
+        </table>
+        <button id = "btn-submit-delete"> Delete Question </button>
+        <button id = "btn-close" onclick="closeTab()"> Close </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="second-col">
+    <div class="questionLibrary">
+      <table id="table-question">
+        <caption> Question List </caption>
+        <tr style="font-weight: 700;">
+          <td> Question No. </td>
+          <td> Predicate</td>
+          <td> Action </td> 
+          <td> Child No.</td>
+        </tr>
+      </table>
+    </div>
+    
+  </div>
 </div>
 
-<!--Button Functionality-->
-<div class="btn">
-  <button class="btn-add" onclick="addQuestion()" id="btn-add"> Add </button>
-  <button class="btn-delete" onclick="deleteQuestion()" id="btn-delete"> Delete </button>
-  <button class="btn-edit" onclick="editQuestion()"id="btn-edit"> Edit </button>
-</div> 
 
-<!--Display Add/Remove/Edit Section-->
-<div id="displayQuestionList" style="overflow-x:auto; display: none;">
-  <table id="table-question">
-    <caption> Question List </caption>
-    <tr style="font-weight: 700;">
-      <td> Predicate</td>
-      <td> Action </td> 
-    </tr>
-  </table>
-  <!--Edit Section-->
-  <div id="edit" style="display: none;">
-    <table>
-      <tr>
-        <td> Question Number </td>
-        <td> <input type='text'id="question-edit" size=50 onchange="checkType()"> </td>
-      </tr>
-      <tr>
-        <td> New Predicate </td>
-        <td> <input type='text'id="predicate-edit" size=50> </td>
-      </tr>
-      <tr>
-        <td> New Action </td>
-        <td> <input type='text'id="action-edit" size=50> </td>
-      </tr>
-    </table>
-    <button id = "btn-submit-change"> Change </button>
-    <button id = "btn-close" onclick="closeTab()"> Close </button>
-  </div>
 
-  <!--Add Section-->
-  <div id="add" style="display: none;">
-    <table>
-      <tr>
-        <td> Add option for question </td>
-        <td> <input type='text'id="question-add" size=50 onchange="checkAdd()"> </td>
-      </tr>
-      <tr>
-        <td> New Predicate </td>
-        <td> <input type='text'id="predicate-add" size=50> </td>
-      </tr>
-      <tr>
-        <td> New Action </td>
-        <td> <input type='text'id="action-add" size=50> </td>
-      </tr>
-    </table>
-    <button id = "btn-submit-add"> Add Question </button>
-    <button id = "btn-close" onclick="closeTab()"> Close </button>
-  </div>
 
-  <!--Delete Section-->
-  <div id="delete" style="display: none;">
-    <table>
-      <tr>
-        <td> Choose question root </td>
-        <td> <input type='text'id="question-root-delete" size=50 onchange="checkDelete(id)"> </td>
-      </tr>
-      <tr>
-        <td> Choose question option to delete </td>
-        <td> <input type='text'id="question-option-delete" onchange="checkDelete(id)" size=50> </td>
-      </tr>
-    </table>
-    <button id = "btn-submit-delete"> Delete Question </button>
-    <button id = "btn-close" onclick="closeTab()"> Close </button>
-  </div>
-</div>
+
 
 
 <!--Handle Question tree-->
@@ -148,16 +180,28 @@
 
   function addRowQuestion(arr){
       let tableRef = document.getElementById("table-question");
-      arr.forEach(ele => {
+      arr.forEach((ele, index) => {
         let newRow  = tableRef.insertRow(-1);
 
-        let predicateCell = newRow.insertCell(0);
+        let numberCell = newRow.insertCell(0);
+        let newNumber = document.createTextNode(index+1);
+        numberCell.appendChild(newNumber);
+
+        let predicateCell = newRow.insertCell(1);
         let newPredicate = document.createTextNode(ele.predicate);
         predicateCell.appendChild(newPredicate);
 
-        let actionCell = newRow.insertCell(1);
+        let actionCell = newRow.insertCell(2);
         let newAction = document.createTextNode(ele.action);
         actionCell.appendChild(newAction);
+
+        let childCell = newRow.insertCell(3);
+        let number = "";
+        for (let i = 0; i< ele.optAns.length; i++){
+          number += (arr.findIndex(rank => rank.predicate == ele.optAns[i].predicate) + 1) +". " ;
+        }
+        let newChild = document.createTextNode(number);
+        childCell.appendChild(newChild);
       });
     }
 
@@ -243,6 +287,7 @@ tree.addSingleNode(question7);
 tree.addSingleNode(question8);
 
 tree.run();
+addRowQuestion(tree.questionList);
 </script>
 
 <!--Handle Button Add/Delete/Edit-->
@@ -255,8 +300,11 @@ tree.run();
   };
 
   function addQuestion(){
+    document.getElementById("edit").style.display = "none";
+    document.getElementById("delete").style.display = "none";
+
     document.getElementById("displayQuestionList").style.display = "block";
-    addRowQuestion(tree.questionList);
+    // addRowQuestion(tree.questionList);
     document.getElementById("add").style.display = "block";
 
     document.getElementById("btn-submit-add").onclick = () => {
@@ -273,9 +321,12 @@ tree.run();
   };
 
   function deleteQuestion(){
+    document.getElementById("edit").style.display = "none";
+    document.getElementById("add").style.display = "none";
+
     document.getElementById("displayQuestionList").style.display = "block";
     document.getElementById("delete").style.display = "block";
-    addRowQuestion(tree.questionList);
+    // addRowQuestion(tree.questionList);
 
     document.getElementById("btn-submit-delete").onclick = () => {
     document.getElementById("table-question").innerHTML="<caption> Question List </caption><tr style=\"font-weight: 700;\"><td> Predicate</td><td> Action </td> </tr>";
@@ -288,9 +339,12 @@ tree.run();
   };
 
   function editQuestion(){
+    document.getElementById("add").style.display = "none";
+    document.getElementById("delete").style.display = "none";
+    
     document.getElementById("displayQuestionList").style.display = "block";
     document.getElementById("edit").style.display = "block";
-    addRowQuestion(tree.questionList);
+    // addRowQuestion(tree.questionList);
 
     document.getElementById("btn-submit-change").onclick = () => {
     document.getElementById("table-question").innerHTML="<caption> Question List </caption><tr style=\"font-weight: 700;\"><td> Predicate</td><td> Action </td> </tr>";
