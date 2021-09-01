@@ -86,6 +86,21 @@ body { margin: 0; padding: 0; }
       border-radius: 5px;
     }
 </style>
+<style>
+  #marker {
+  background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  }
+   
+  .mapboxgl-popup {
+  max-width: 200px;
+  }
+  </style>
+
 <!--Animated travel-->
 <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
 
@@ -98,7 +113,7 @@ body { margin: 0; padding: 0; }
 
 <!--Button replay-->
 <div class="overlay">
-  <button id="replay">Replay</button>
+  <button id="replay">Replay flight effect</button>
 </div>
 
 <script>
@@ -113,6 +128,24 @@ body { margin: 0; padding: 0; }
     center: [-96, 37.8],
     zoom: 3
   });
+  // Add FullScreen Option
+  map.addControl(new mapboxgl.FullscreenControl());
+
+  // Add zoom and rotation controls to the map.
+  map.addControl(new mapboxgl.NavigationControl());
+
+  // Add geolocate control to the map.
+  map.addControl(
+    new mapboxgl.GeolocateControl({
+    positionOptions: {
+    enableHighAccuracy: true
+    },
+    // When active the map will receive updates to the device's location as it changes.
+    trackUserLocation: true,
+    // Draw an arrow next to the location dot to indicate which direction the device is heading.
+    showUserHeading: true
+    })
+  );
   
   // Add the control to the map.
   const geocoder = new MapboxGeocoder({
@@ -132,8 +165,15 @@ body { margin: 0; padding: 0; }
   const marker = new mapboxgl.Marker({
     draggable: true
     })
-    .setLngLat([0, 0])
+    .setLngLat([-77.03651974074286, 38.89745353586167])
     .addTo(map);
+
+  const lngLat = marker.getLngLat();
+  //Add popUp
+  const popup = new mapboxgl.Popup({ closeOnClick: false })
+  .setLngLat([lngLat.lng+0.000000002, lngLat.lat+0.000000002])
+  .setHTML('<h5>Zoom in here and drag this green marker to know the Longitude and Latitude of location !</h5>')
+  .addTo(map);  
 
   //Drag Marker
   function onDragEnd() {
@@ -146,6 +186,23 @@ body { margin: 0; padding: 0; }
 
 
   document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
+  // create the location popup
+  const monument = [-77.0353, 38.8895];
+  const popup2 = new mapboxgl.Popup({ offset: 25 }).setText(
+  'Construction on the Washington Monument began in 1848.'
+  );
+  
+  // create DOM element for the marker
+  const el = document.createElement('div');
+  el.id = 'marker';
+  
+  // create the marker
+  new mapboxgl.Marker(el)
+  .setLngLat(monument)
+  .setPopup(popup2) // sets a popup on this marker
+  .addTo(map);
+
 </script>
 
 <!--Info card-->
@@ -331,7 +388,7 @@ body { margin: 0; padding: 0; }
 
   const destinationMarker = new mapboxgl.Marker({
         color: '#9F5CFA',
-        draggable: true
+        draggable: false
         })
         .setLngLat(destination) // marker position using variable 'from'
         .addTo(map); //add marker to map 
